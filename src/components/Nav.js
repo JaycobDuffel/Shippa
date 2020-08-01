@@ -1,19 +1,30 @@
 import React from 'react';
-import { AppBar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography';
 import Login from './Login.js'
 import Signup from './Signup.js'
 
-export default function Nav() {
-    return (
-    
-        <div>
-            <AppBar>
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+  }
+  
+});
 
-                <Login to="./Login.js"> Login </Login>
-                <p> Register </p>
-                <div> </div>
-            </AppBar>
-           
-        </div>
-    )
+export default function Nav() {
+  const classes = useStyles()
+
+  return (
+    <div className = {classes.root}>
+      <AppBar position="static">
+        <Toolbar variant="dense"> 
+            <Login />
+            <Signup  />
+        </Toolbar>
+          
+      </AppBar>
+    </div>
+  )
 }
