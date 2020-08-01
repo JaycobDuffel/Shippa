@@ -1,11 +1,14 @@
 import React from 'react';
-import { BottomNavigation } from '@material-ui/core';
-
+// import { TopNavigation } from '@material-ui/core';
+import Login from './Login.js'
+//import register
 
 export default function Nav() {
     return (
+    
         <div>
-            Nav is here
+                <Login to="./Login.js"> Login </Login>
+           
         </div>
     )
 }
