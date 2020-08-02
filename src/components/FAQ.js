@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,10 +32,11 @@ export default function FAQ() {
     return (
       <IconButton variant="contained" className={classes.menuButton} color="inherit">
         <Typography component="h1" variant="h5">
+          <Link style={{color: 'black', textDecoration: 'none'}} to='/faq'>
             FAQ
+          </Link>
         </Typography>
       </IconButton>
-
     )
 
   

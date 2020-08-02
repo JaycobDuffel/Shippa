@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Footer from './components/Footer'
 import Nav from './components/Nav'
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps"
+import Map from './components/Map'
+import FAQPage from './components/FAQPage';
+import TermsOfServicePage from './components/TermsOfServicePage';
+import ContactUsPage from './components/ContactUsPage'
 
 
 // import { client } from "./elephantsql.js";
@@ -11,37 +14,22 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-map
 
 //remove hardcoded marker when DB setup 
 
-function Map() {
-  return (
-    <GoogleMap 
-      defaultZoom={10} 
-      defaultCenter={{ lat: 53.631611, lng: -113.323975 }}
-    >
-      <Marker position={{ lat: 53.631611, lng: -113.323975 }} /> 
-      
-    </GoogleMap>
-  );
-}
-
-const WrappedMap = withScriptjs(withGoogleMap(Map));
-
 
 
 export default function App() {
   return (
+
     <>
-    <Nav />
-    <div style={{ width: '100vw', height: '100vh' }} >
-     
-      <WrappedMap 
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_MAP_KEY}`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
-      
-    </div>
-    <Footer/>
+      <Router>
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Map} />
+          <Route path="/faq" exact component={FAQPage} />
+          <Route path="/privacy" exact component={TermsOfServicePage} />
+          <Route path="/contact" exact component={ContactUsPage} />
+        </Switch>
+        <Footer/>
+      </Router>
     </>
   );
 }
