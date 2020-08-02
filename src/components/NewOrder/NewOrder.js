@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NewOrder() {
   const [open, setOpen] = useState(false)
+  
   const handleClickOpen = () => {
     setOpen(true);
   };

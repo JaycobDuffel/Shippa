@@ -7,6 +7,7 @@ import Map from './components/Map'
 import FAQPage from './components/FAQPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage'
+import Users from './databaseTEST'
 
 
 // import { client } from "./elephantsql.js";
@@ -21,6 +22,7 @@ export default function App() {
 
     <>
       <Router>
+        <Users />
         <Nav />
         <Switch>
           <Route path="/" exact component={Map} />

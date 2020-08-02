@@ -9,6 +9,7 @@ import Signup from './Signup.js'
 import FAQ from './FAQ.js'
 import TermsOfService from './TermsOfService.js'
 import ContactUs from './ContactUs.js'
+import Home from './Home'
 
 
 function Copyright() {
