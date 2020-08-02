@@ -33,7 +33,7 @@ export default function TermsOfService() {
       <Typography component="h1" variant="h5">
           Privacy & Terms Of Service
       </Typography>
-      </IconButton>
+    </IconButton>
   )
 
   

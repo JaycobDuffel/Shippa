@@ -33,7 +33,7 @@ export default function ContactUs() {
       <Typography component="h1" variant="h5">
           Contact Us
       </Typography>
-      </IconButton>
+    </IconButton>
   )
 
   

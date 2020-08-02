@@ -96,7 +96,7 @@ export default function Signup()  {
                 label="Company Name"
                 autoFocus
                 value={name}
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>

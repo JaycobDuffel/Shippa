@@ -27,14 +27,7 @@ function Copyright() {
 
 
 const useStyles = makeStyles((theme) => ({
-  styling: {
-    width: 200,
-  },
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-  },
+  
   main: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2),
@@ -42,9 +35,10 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
+  bgcolor: {
+    backgroundColor: '#FAFAFA'
+  }
 }));
 
 export default function Footer() {
@@ -54,11 +48,11 @@ export default function Footer() {
     <div className={classes.root}>
       <CssBaseline />
       <footer className={classes.footer}>
-        <Container maxWidth="sm">
+        <Container maxWidth="md" >
           <BottomNavigation
            showLabels
-            className={classes.styling}>
-              <FAQ style={{marginLeft: '15px'}} />
+           className={classes.bgcolor}>
+              <FAQ />
               <TermsOfService />
               <ContactUs />
               <Signup />

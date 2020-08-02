@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 // import Typography from '@material-ui/core/Typography';
 import Login from './Login.js'
 import Signup from './Signup.js'
+import NewOrder from './NewOrder/NewOrder'
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +22,8 @@ export default function Nav() {
       <AppBar position="static">
         <Toolbar variant="dense"> 
             <Login />
-            <Signup  />
+            <Signup />
+            <NewOrder />
         </Toolbar>
           
       </AppBar>
