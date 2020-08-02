@@ -6,6 +6,11 @@ import {
   Marker,
 } from "react-google-maps/";
 
+//access api key with process.env.REACT_APP_MAP_KEY 
+
+//remove hardcoded marker when DB setup 
+
+
 export default function WholeMap() {
  function Map() {
   return (

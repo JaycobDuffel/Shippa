@@ -11,9 +11,6 @@ import Users from './databaseTEST'
 
 
 // import { client } from "./elephantsql.js";
-//access api key with process.env.REACT_APP_MAP_KEY 
-
-//remove hardcoded marker when DB setup 
 
 
 
