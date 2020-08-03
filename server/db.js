@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const Pool = require("pg").Pool;
 
 // SQL_ELEPHANT=postgres://zkhccldk:n-pSTAJ2oWoRUlLaekuGGpDvLUr7Bp37@ruby.db.elephantsql.com:5432/zkhccldk
@@ -6,11 +6,11 @@ const Pool = require("pg").Pool;
 
 
 const pool = new Pool({
-    user: "zkhccldk", //actually elephant???
-    password: "n-pSTAJ2oWoRUlLaekuGGpDvLUr7Bp37", //bring in from ENV
-    host: "ruby.db.elephantsql.com",
+    user: process.env.USERNAME, //actually elephant???
+    password: process.env.PASSWORD, //bring in from ENV
+    host: process.env.HOSTNAME,
     port: 5432,
-    database: "zkhccldk" //will be users for users, etc
+    database: process.env.DATABASENAME //will be users for users, etc          
 });
 
 module.exports = pool;
