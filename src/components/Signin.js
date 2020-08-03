@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Signin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -46,7 +45,19 @@ export default function Signin() {
   const { login } = useContext(AuthContext)
   const classes = useStyles();
 
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/users", {
+        headers: { "Content-Type": "application/json"},
+        
+      })
   
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
   const handleClickOpen = () => {
     setOpen(true);
   };

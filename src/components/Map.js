@@ -33,8 +33,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
     containerElement={<div style={{ height: `400px` }} />}
     mapElement={<div style={{ height: `100%` }} />}
   />
- </div>
+ </div>              
  )
-
 }
 

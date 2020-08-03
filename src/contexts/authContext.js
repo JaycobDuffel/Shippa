@@ -2,23 +2,38 @@ import React, { createContext } from 'react';
 
 export const AuthContext = createContext();
 
-const users = [
-  {
-    "id": 1,
-    "name": "Shippa",
-    "email": "test@example.com",
-    "password": "12345"
-  },
-  {
-    "id": 2,
-    "name": "Shippa",
-    "email": "test2@example.com",
-    "password": "12345"
-  }
-]
+
+
+// const users = [
+//   {
+//     "id": 1,
+//     "name": "Shippa",
+//     "email": "test@example.com",
+//     "password": "12345"
+//   },
+//   {
+//     "id": 2,
+//     "name": "Shippa",
+//     "email": "test2@example.com",
+//     "password": "12345"
+//   }
+// ]
+
+const getUsers = async () => {
+  const data = await fetch("http://localhost:5000/users", {
+    headers: { "Content-Type": "application/json"},
+  })
+  const users = await JSON.stringify(data)
+  return users
+}
+
+const users = getUsers()
+console.log(users)
+
 
 const AuthContextProvider = (props) => {
-
+  
+  
   //destructure values from the app context
   const authUser = JSON.parse(localStorage.getItem('authUser'))
 
@@ -26,7 +41,7 @@ const AuthContextProvider = (props) => {
     if (name && email && password && confirmPassword) {
       if (password === confirmPassword) {
         const newUser = {name, email, password}
-        users.push(newUser)
+        // users.push(newUser)
         login(email, password)
       } else {
         alert('Passwords do not match')
@@ -38,8 +53,12 @@ const AuthContextProvider = (props) => {
 
   const login = (email, password) => {
     users.map((user) => {
-      if(user.email === email && user.password === password) {
+      if (email === '' || password === '') {
+        alert('Please fill out the mandatory fields')
+      } else if(user.email === email && user.password === password) {
         localStorage.setItem('authUser', JSON.stringify(user))
+      } else {
+        alert('username or password are not correct')
       }
     })
   };

@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
   
-export default function Signout() {
+export default function Signout({ setCheckLogin }) {
   const [open, setOpen] = useState(false);
   const { logout } = useContext(AuthContext)
 
@@ -22,12 +22,11 @@ export default function Signout() {
   const handleClose = () => {
     setOpen(false);
   };
-
   function handleSubmit(event) {
     logout()
     handleClose()
     event.preventDefault();
-    
+    setCheckLogin(true)
   }
 
   return (

@@ -30,8 +30,8 @@ export default function Nav({ setCheckLogin, checkLogin }) {
     <div className = {classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense"> 
-            {authUser? <Signout /> : <Signup setCheckLogin={setCheckLogin} />}
-            {authUser? '' : <Signin />}
+            {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
+            {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}
             <NewOrder />
             {authUser? <h1>Hello {authUser.name}</h1> : ""}
         </Toolbar>
