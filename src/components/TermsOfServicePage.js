@@ -8,8 +8,7 @@ export default function TermsOfServicePage() {
   }
   return (
     <div style={styles}>
-      <h1>Privacy Policy</h1>
-      <h1>Terms of Service</h1>
+      <h1>Privacy Policy & Terms of Service</h1>
     </div>
   )
 }

@@ -28,7 +28,6 @@ export default function Nav() {
             <Login />
             <Signup />
             <NewOrder />
-            <h1>Hello!!</h1>
         </Toolbar>
           
       </AppBar>
