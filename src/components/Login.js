@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button, Dialog, Avatar, CssBaseline, TextField, FormControlLabel, Checkbox, Link,  
   Grid, Box, Typography, makeStyles, Container, IconButton
        } from '@material-ui/core/';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { useHistory } from "react-router";
+import { AuthContext } from '../contexts/authContext';
 
 function Copyright() {
   return (
@@ -45,9 +47,9 @@ const users = [
     "password": "12345"
   },
   {
-    "id": 1,
+    "id": 2,
     "name": "Shippa",
-    "email": "test@example.com",
+    "email": "test2@example.com",
     "password": "12345"
   }
 ]
@@ -57,7 +59,10 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState(false)
+  const { login } = useContext(AuthContext)
   const classes = useStyles();
+
+  const history = useHistory();
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,13 +73,16 @@ export default function Login() {
   };
 
   function handleSubmit(event) {
-    users.map(user => {
-      if (email === user.email && password === user.password) {
-        event.preventDefault();
-      } else {
-        console.log("email or password is not correct")
-      }
-    })
+    login(email, password)
+      handleClose()
+      event.preventDefault();
+    // users.map(user => {
+    //   if (email === user.email && password === user.password) {
+    //     localStorage.setItem('authUser', JSON.stringify(user)) // make sure to remove on logout
+    //     handleClose()
+    //     event.preventDefault();
+    //   }
+    // })
   }
 
     return (

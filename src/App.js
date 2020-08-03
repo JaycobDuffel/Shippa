@@ -8,6 +8,7 @@ import FAQPage from './components/FAQPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage'
 import Users from './databaseTEST'
+import AuthContextProvider from './contexts/authContext'
 
 
 // import { client } from "./elephantsql.js";
@@ -18,6 +19,7 @@ export default function App() {
   return (
 
     <>
+     <AuthContextProvider>
       <Router>
         <Users />
         <Nav />
@@ -29,6 +31,7 @@ export default function App() {
         </Switch>
         <Footer/>
       </Router>
+      </AuthContextProvider>
     </>
   );
 }
