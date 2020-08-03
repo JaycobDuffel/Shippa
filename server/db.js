@@ -6,11 +6,11 @@ const Pool = require("pg").Pool;
 
 
 const pool = new Pool({
-    user: process.env.USERNAME, //actually elephant???
-    password: process.env.PASSWORD, //bring in from ENV
-    host: process.env.HOSTNAME,
+    user: "zkhccldk", //actually elephant???
+    password: "n-pSTAJ2oWoRUlLaekuGGpDvLUr7Bp37", //bring in from ENV
+    host: "ruby.db.elephantsql.com",
     port: 5432,
-    database: process.env.DATABASENAME //will be users for users, etc
+    database: "zkhccldk" //will be users for users, etc
 });
 
 module.exports = pool;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Footer from './components/Footer'
@@ -7,7 +7,6 @@ import Map from './components/Map'
 import FAQPage from './components/FAQPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage'
-import Users from './databaseTEST'
 
 
 // import { client } from "./elephantsql.js";
@@ -20,9 +19,9 @@ import Users from './databaseTEST'
 export default function App() {
   return (
 
-    <>
+    <Fragment>
       <Router>
-        <Users />
+        
         <Nav />
         <Switch>
           <Route path="/" exact component={Map} />
@@ -32,7 +31,7 @@ export default function App() {
         </Switch>
         <Footer/>
       </Router>
-    </>
+    </Fragment>
   );
 }
 
