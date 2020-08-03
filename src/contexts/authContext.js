@@ -1,5 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
-import _ from 'lodash';
+import React, { createContext } from 'react';
 
 export const AuthContext = createContext();
 
@@ -24,17 +23,20 @@ const AuthContextProvider = (props) => {
   const authUser = JSON.parse(localStorage.getItem('authUser'))
 
   const login = (email, password) => {
-    const newUser = { email, password }
     users.map((user) => {
       if(user.email === email && user.password === password) {
-        localStorage.setItem('authUser', JSON.stringify(user)) // make sure to remove on logout
+        localStorage.setItem('authUser', JSON.stringify(user))
         console.log('success')
       }
     })
   };
 
+  const logout = () => {
+    localStorage.removeItem('authUser')
+  };
+
   return (
-    <AuthContext.Provider value={{authUser, login}}>
+    <AuthContext.Provider value={{authUser, login, logout}}>
       {props.children}
     </AuthContext.Provider>
   )

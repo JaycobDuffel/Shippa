@@ -142,14 +142,19 @@ app.get('/usershipments/:id', async (req, res) => {
 
 //Update a shipment
 
-app.put('/users/:id', async (req, res) => {
+app.put('/shipments/:id', async (req, res) => {
   try {
-    const { id } = req.params;
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
+    const user_id = req.body.user_id;
+    const start_point = req.body.start_point;
+    const end_point = req.body.end_point;
+    const distance = req.body.distance;
+    const price = req.body.price;
+    const status = req.body.status;
 
-    const updateUser = await pool.query('UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4', [name, email, password, id])
+    const { id } = req.params;
+
+    const updateUser = await pool.query('UPDATE shipments SET user_id = $1, start_point = $2, end_point = $3, distance = $4, price = $5, status = $6 WHERE id = $7', [user_id, start_point, end_point, distance, price, status, id])
+     
     
     res.json("User Updated")
 
@@ -159,6 +164,17 @@ app.put('/users/:id', async (req, res) => {
 })
 
 // Delete Shipment
+
+app.delete('/shipments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteShipment = await pool.query('DELETE FROM shipments WHERE id = $1', [id])
+
+    res.json("Shipment deleted")
+  } catch (error) {
+    console.error(error.message)
+  }
+})
 
 app.listen(5000, () => {
     //listen logic here, can't see it on the video yet. 

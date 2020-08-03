@@ -7,6 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Login from './Login.js'
 import Signup from './Signup.js'
 import NewOrder from './NewOrder/NewOrder'
+import { getThemeProps } from '@material-ui/styles';
+import Logout from './Logout';
 
 const useStyles = makeStyles({
   root: {
@@ -18,17 +20,16 @@ const useStyles = makeStyles({
 export default function Nav() {
   const classes = useStyles()
   const { authUser } = useContext(AuthContext)
-  console.log(authUser)
   
 
   return (
     <div className = {classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense"> 
-            <Login />
+            {authUser? <Logout /> : <Login />}
             <Signup />
             <NewOrder />
-            <h1>Hello!!</h1>
+            {authUser? <h1>Hello {authUser.name}</h1> : ""}
         </Toolbar>
           
       </AppBar>

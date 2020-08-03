@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Dialog, Avatar, CssBaseline, TextField, FormControlLabel, Checkbox, Link,  
   Grid, Box, Typography, makeStyles, Container, IconButton
        } from '@material-ui/core/';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { useHistory } from "react-router";
 import { AuthContext } from '../contexts/authContext';
 
 function Copyright() {
@@ -39,21 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const users = [
-  {
-    "id": 1,
-    "name": "Shippa",
-    "email": "test@example.com",
-    "password": "12345"
-  },
-  {
-    "id": 2,
-    "name": "Shippa",
-    "email": "test2@example.com",
-    "password": "12345"
-  }
-]
-
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -62,7 +46,6 @@ export default function Login() {
   const { login } = useContext(AuthContext)
   const classes = useStyles();
 
-  const history = useHistory();
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,13 +59,7 @@ export default function Login() {
     login(email, password)
       handleClose()
       event.preventDefault();
-    // users.map(user => {
-    //   if (email === user.email && password === user.password) {
-    //     localStorage.setItem('authUser', JSON.stringify(user)) // make sure to remove on logout
-    //     handleClose()
-    //     event.preventDefault();
-    //   }
-    // })
+      window.location.reload(false)
   }
 
     return (
