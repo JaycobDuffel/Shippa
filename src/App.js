@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Footer from './components/Footer'
@@ -14,13 +14,15 @@ import AuthContextProvider from './contexts/authContext'
 
 
 export default function App() {
+  const [checkLogin, setCheckLogin] = useState(true)
+
   return (
 
     <Fragment>
      <AuthContextProvider>
       <Router>
         
-        <Nav />
+        <Nav checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
         <Switch>
           <Route path="/" exact component={Map} />
           <Route path="/faq" exact component={FAQPage} />

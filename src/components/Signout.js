@@ -27,7 +27,7 @@ export default function Signout() {
     logout()
     handleClose()
     event.preventDefault();
-    window.location.reload(false)
+    
   }
 
   return (

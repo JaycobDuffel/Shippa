@@ -65,7 +65,7 @@ export default function Signin() {
     return (
       <div>
         <IconButton variant="contained" className={classes.menuButton} color="inherit"  onClick={handleClickOpen}>
-          Sign in
+          Sign In
         </IconButton>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
               <Container component="main" maxWidth="xs">

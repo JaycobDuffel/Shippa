@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Signup()  {
+export default function Signup({ setCheckLogin })  {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -58,6 +58,29 @@ export default function Signup()  {
   const [open, setOpen] = useState(false)
   const classes = useStyles();
   const { signup } = useContext(AuthContext)
+  const { authUser } = useContext(AuthContext)
+  
+  
+  const onSubmitForm = async (e) => {
+  e.preventDefault();
+  try {
+    const body  = { email, password, name }
+    const response = await fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(body)
+    })
+    handleClose()
+    setEmail("")
+    setName("")
+    setPassword("")
+    setConfirmPassword("")
+    setCheckLogin(true)
+    console.log(body)
+  } catch (error) {
+    console.error(error.message)
+  }
+}
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,10 +91,10 @@ export default function Signup()  {
   };
 
   function handleSubmit(event) {
+    
     if (signup(name, email, password, confirmPassword)) {
       handleClose()
-      event.preventDefault();
-      window.location.reload(false)
+      // window.location.reload(false)
     } else {
       
     }
@@ -92,7 +115,7 @@ export default function Signup()  {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={onSubmitForm}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
