@@ -22,11 +22,24 @@ const AuthContextProvider = (props) => {
   //destructure values from the app context
   const authUser = JSON.parse(localStorage.getItem('authUser'))
 
+  const signup = (name, email, password, confirmPassword) => {
+    if (name && email && password && confirmPassword) {
+      if (password === confirmPassword) {
+        const newUser = {name, email, password}
+        users.push(newUser)
+        login(email, password)
+      } else {
+        alert('Passwords do not match')
+      }
+    } else {
+      alert('Please fill out the mandatory fields')
+    }
+  }
+
   const login = (email, password) => {
     users.map((user) => {
       if(user.email === email && user.password === password) {
         localStorage.setItem('authUser', JSON.stringify(user))
-        console.log('success')
       }
     })
   };
@@ -36,7 +49,7 @@ const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider value={{authUser, login, logout}}>
+    <AuthContext.Provider value={{authUser, login, logout, signup}}>
       {props.children}
     </AuthContext.Provider>
   )

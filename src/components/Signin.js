@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Login() {
+export default function Signin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState(false)
@@ -57,15 +57,15 @@ export default function Login() {
 
   function handleSubmit(event) {
     login(email, password)
-      handleClose()
-      event.preventDefault();
-      window.location.reload(false)
+    handleClose()
+    event.preventDefault();
+    window.location.reload(false)
   }
 
     return (
       <div>
         <IconButton variant="contained" className={classes.menuButton} color="inherit"  onClick={handleClickOpen}>
-          Login
+          Sign in
         </IconButton>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
               <Container component="main" maxWidth="xs">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
+import { AuthContext } from '../contexts/authContext';
 
 function Copyright() {
   return (
@@ -52,9 +53,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup()  {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
   const [open, setOpen] = useState(false)
   const classes = useStyles();
+  const { signup } = useContext(AuthContext)
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -65,7 +68,13 @@ export default function Signup()  {
   };
 
   function handleSubmit(event) {
-    event.preventDefault();
+    if (signup(name, email, password, confirmPassword)) {
+      handleClose()
+      event.preventDefault();
+      window.location.reload(false)
+    } else {
+      
+    }
   }
 
     return (
@@ -124,6 +133,20 @@ export default function Signup()  {
                 autoComplete="current-password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Confirm Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>

@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
   
-export default function Logout() {
+export default function Signout() {
   const [open, setOpen] = useState(false);
   const { logout } = useContext(AuthContext)
 
@@ -33,7 +33,7 @@ export default function Logout() {
   return (
     <div>
       <IconButton variant="contained" color="inherit"  onClick={handleClickOpen}>
-        Logout
+        Signout
       </IconButton>
       <Dialog
         open={open}
@@ -46,7 +46,7 @@ export default function Logout() {
         <DialogTitle id="alert-dialog-slide-title">{"Confirm Logout"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Are you sure you want to logout?
+            Are you sure you want to signout?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
