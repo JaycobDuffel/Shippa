@@ -87,6 +87,31 @@ export default function Checkout() {
   const [dropoffProv, setDropoffProv] = useState('')
   const [dropoffPostal, setDropoffPostal] = useState('')
 
+  
+
+
+  const user_id = JSON.parse(localStorage.getItem('authUser')).id;
+  const end_point = dropoffAddress;
+  const distance = "400 km"
+  const price = "23490"
+  const status = true
+  const start_point = pickupAddress;
+  
+  const onSubmitForm = async (e) => {
+    try {
+      const body  = { user_id, start_point, end_point, distance, price, status  }
+        await fetch("http://localhost:5000/shipments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(body)
+      })
+      
+      console.log(body)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -160,14 +185,20 @@ export default function Checkout() {
                       Back
                     </Button>
                   )}
-                  <Button
+                  { 
+                    activeStep === steps.length - 1 ? <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {handleNext(); onSubmitForm();}}
+                    className={classes.button}
+                    // onSubmit={onSubmitForm}
+                  >Place order</Button> : <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
+                  >Next</Button>
+                  }
                 </div>
               </React.Fragment>
             )}
