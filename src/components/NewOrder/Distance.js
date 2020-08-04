@@ -1,53 +1,53 @@
 import React, { useState, Component } from 'react';
 import { GoogleMap, InfoWindow, Marker, GoogleApiWrapper} from "react-google-maps/";
+import axios from 'axios';
+export default function Distance () {
+  // initializes state
+  let [latitude, setLatitude] = React.useState(0)
+  let [longitude, setLongitude] = React.useState(0)
+  let [address, setAddress] = React.useState('')
+  
+  const geocode = (e) => {
+    e.preventDefault()
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+      params: {
+        address: address,
+        key: process.env.REACT_APP_MAP_KEY
+      }
+    })
+    .then((res) => {
+      const location = res.data.results[0].geometry.location 
+      console.log('latitude is: ', location.lat)
+      console.log('longitutde is: ', location.lng)
+      setLatitude(location.lat)
+      setLongitude(location.lng)
+      
+    })
+    .catch((err) => {
+      console.log('err >>', err)
+      alert("Please enter an address")
+    })
+  }
 
-export default function Distance  () {
-    // initializes state
-    let [latitude, setLatitude] = React.useState(-33.7560119)
-    let [longitude, setLongitude] = React.useState(150.6038367)
-    let [address, setAddress] = React.useState('')
-    // searches for new locations
-    const updateCoordinates = (e) => {
-        e.preventDefault()
-       //  const encodedAddress = encodeURI(address)
-        // fetches data from our ap CHECK THAT THE KEY IS SAMEiOR WORKS
-        fetch(`https://google-maps-geocoding.p.rapidapi.com/geocode/json?language=en&address=${encodeURIComponent(address)}`, {
-            "method": "GET",
-            "headers": {
-            "x-rapidapi-host": "google-maps-geocoding.p.rapidapi.com",
-            "x-rapidapi-key": process.env.RAPIDAPI_KEY,
-            },
-            mode: "no-cors"
-        })
-        .then(response => response.json())
-        .then(response => {
-          console.log("got respone>>", response)
-            setLatitude(response.lat)
-            setLongitude(response.long)
-        })
-        .catch(err => console.log(err))
-    }
-    return (
-        <div>
-            The latitude is {latitude}
-            The longitude is {longitude}
-            <form onSubmit={(e) => updateCoordinates(e)}>
-                <div className="form-group">
-                    <label htmlFor="address">Address</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="address"
-                        required
-                        aria-describedby="addressHelp"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        />
-                </div>
-                <button className="btn mb-4 btn-primary" type='submit'>Search Location</button>
-            </form>
+  return (
+    <div>
+        <form onSubmit={(e) => geocode(e)}>
+        <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+                type="text"
+                className="form-control"
+                id="address"
+                
+                aria-describedby="addressHelp"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                />
         </div>
-    )
+        <button className="btn mb-4 btn-primary" type='submit'>Search Location</button>
+        </form>
+    </div>
+  )
 }
 
 
@@ -65,5 +65,23 @@ export default function Distance  () {
 //api sspits out info in response.rows, response.rows.distance.value (or .text), response.rows.duration.value
 // putting map.js code below for reference/might need to use it here rather than there...?
 
+//-------- throwaway form code
 
+// The latitude is {latitude}
+// The longitude is {longitude}
+// <form onSubmit={(e) => updateCoordinates(e)}>
+//     <div className="form-group">
+//         <label htmlFor="address">Address</label>
+//         <input
+//             type="text"
+//             className="form-control"
+//             id="address"
+          
+//             aria-describedby="addressHelp"
+//             value={address}
+//             onChange={(e) => setAddress(e.target.value)}
+//             />
+//     </div>
+//     <button className="btn mb-4 btn-primary" type='submit'>Search Location</button>
+// </form>
 
