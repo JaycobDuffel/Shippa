@@ -1,11 +1,6 @@
 import React from "react";
 import {
   MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-  MDBBtn,
-  MDBInput,
 } from "mdbreact";
 export default function TermsOfServicePage() {
   return (

@@ -9,6 +9,7 @@ import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactUsPage from './components/ContactUsPage'
 import AuthContextProvider from './contexts/authContext'
 import ScrollToTop from './components/helpers/ScrollToTop'
+import Distance from './components/NewOrder/Distance';
 
 // import { client } from "./elephantsql.js";
 
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />
         </Switch>
+        <Distance />
         <Footer/>
         </ScrollToTop>
       </Router>

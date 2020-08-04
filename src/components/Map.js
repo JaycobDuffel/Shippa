@@ -10,7 +10,7 @@ import {
 
 //access api key with process.env.REACT_APP_MAP_KEY 
 
-//remove hardcoded marker when DB setup 
+//remove hardcoded marker when DB setup  
 
 
 export default function WholeMap() {
@@ -34,6 +34,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
     containerElement={<div style={{ height: `400px` }} />}
     mapElement={<div style={{ height: `100%` }} />}
   />
+  
  </div>              
  )
 }
