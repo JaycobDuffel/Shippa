@@ -12,7 +12,7 @@ export default function DropOff() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Pick up point
+        Drop Off Point
       </Typography>
       <p>Person of contact</p>
       <Grid container spacing={3}>

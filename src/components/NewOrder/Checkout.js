@@ -89,6 +89,30 @@ export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
+
+  // const onSubmitForm = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const body  = { email, password, name }
+  //     const response = await fetch("http://localhost:5000/users", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json"},
+  //       body: JSON.stringify(body)
+  //     })
+  //     handleClose()
+  //     setEmail("")
+  //     setName("")
+  //     setPassword("")
+  //     setConfirmPassword("")
+  //     setCheckLogin(true)
+  //     console.log(body)
+  //   } catch (error) {
+  //     console.error(error.message)
+  //   }
+  // }
+
+
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };

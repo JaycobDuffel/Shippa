@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -58,7 +58,6 @@ export default function Signup({ setCheckLogin })  {
   const [open, setOpen] = useState(false)
   const classes = useStyles();
   const { signup } = useContext(AuthContext)
-  const { authUser } = useContext(AuthContext)
   
   
   const onSubmitForm = async (e) => {
@@ -94,9 +93,6 @@ export default function Signup({ setCheckLogin })  {
     
     if (signup(name, email, password, confirmPassword)) {
       handleClose()
-      // window.location.reload(false)
-    } else {
-      
     }
   }
 

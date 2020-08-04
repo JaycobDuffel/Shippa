@@ -15,12 +15,10 @@ import AuthContextProvider from './contexts/authContext'
 
 export default function App() {
   const [checkLogin, setCheckLogin] = useState(true)
- 
-
   return (
 
     <Fragment>
-     <AuthContextProvider>
+     <AuthContextProvider checkLogin={checkLogin} setCheckLogin={setCheckLogin}>
       <Router>
         
         <Nav checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>

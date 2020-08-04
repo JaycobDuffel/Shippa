@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  import React, { useState, useContext } from 'react'
 import { Button, Dialog, Avatar, CssBaseline, TextField, FormControlLabel, Checkbox, Link,  
   Grid, Box, Typography, makeStyles, Container, IconButton
        } from '@material-ui/core/';
@@ -38,25 +38,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signin() {
+export default function Signin({ setCheckLogin }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [open, setOpen] = useState(false)
   const { login } = useContext(AuthContext)
   const classes = useStyles();
-
-  const onSubmitForm = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:5000/users", {
-        headers: { "Content-Type": "application/json"},
-        
-      })
-  
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -65,14 +52,13 @@ export default function Signin() {
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   function handleSubmit(event) {
+    event.preventDefault();
     login(email, password)
     handleClose()
-    event.preventDefault();
-    window.location.reload(false)
   }
-
+ 
     return (
       <div>
         <IconButton variant="contained" className={classes.menuButton} color="inherit"  onClick={handleClickOpen}>
@@ -88,7 +74,7 @@ export default function Signin() {
               <Typography component="h1" variant="h5">
                 Login
               </Typography>
-              <form className={classes.form} noValidate>
+              <form className={classes.form} noValidate onSubmit={handleSubmit}>
                 <TextField
                   variant="outlined"
                   margin="normal"
@@ -125,7 +111,6 @@ export default function Signin() {
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                  onClick={handleSubmit}
                 >
                   Login
                 </Button>

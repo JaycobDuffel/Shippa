@@ -32,7 +32,7 @@ export default function Signout({ setCheckLogin }) {
   return (
     <div>
       <IconButton variant="contained" color="inherit"  onClick={handleClickOpen}>
-        Signout
+        Sign Out
       </IconButton>
       <Dialog
         open={open}

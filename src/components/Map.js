@@ -25,7 +25,6 @@ export default function WholeMap() {
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
-
  return (<div style={{ width: "100vw", height: "100vh" }}>
   <WrappedMap
     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}`}

@@ -9,12 +9,15 @@ import PhoneInput from 'react-phone-number-input'
 
 export default function PickUp() {
   const [number, setNumber] = useState('')
+  const [pickupFirst, setPickupFirst] = useState('')
+  const [pickupLast, setPickupLast] = useState('')
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Drop off point
+        Pick Up Point
       </Typography>
-      <p>Person of contact</p>
+      <p>Person to Contact</p>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
