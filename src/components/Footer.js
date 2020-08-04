@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect }from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { BottomNavigation } from '@material-ui/core';
@@ -14,9 +14,9 @@ import Home from './Home'
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography variant="body2" color="textSecondary" style={{marginLeft: "100px"}}>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit">
         Shippa
       </Link>{' '}
       {new Date().getFullYear()}
@@ -28,7 +28,11 @@ function Copyright() {
 
 
 const useStyles = makeStyles((theme) => ({
-  
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '75vh',
+  },
   main: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2),
@@ -38,21 +42,28 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 'auto',
   },
   bgcolor: {
-    backgroundColor: '#FAFAFA'
+    backgroundColor: 'inherit'
   }
 }));
 
 export default function Footer() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const classes = useStyles()
   return (
+    
     
     <div className={classes.root}>
       <CssBaseline />
       <footer className={classes.footer}>
-        <Container maxWidth="md" >
+        <Container maxWidth="md" className="d-flex flex-column" >
           <BottomNavigation
            showLabels
            className={classes.bgcolor}>
+              <Home onclick={() =>  window.scrollTo(0, 0)}/>
               <FAQ />
               <TermsOfService />
               <ContactUs />
@@ -62,6 +73,5 @@ export default function Footer() {
         </Container>
       </footer>
     </div>
-
   );
 }

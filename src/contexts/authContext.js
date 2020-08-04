@@ -30,7 +30,8 @@ const AuthContextProvider = (props) => {
   //destructure values from the app context
   const authUser = JSON.parse(localStorage.getItem('authUser'))
 
-  const signup = (name, email, password, confirmPassword) => {
+  const signup = async(name, email, password, confirmPassword) => {
+    await getUser()
     if (name && email && password && confirmPassword) {
       if (password === confirmPassword) {
         login(email, password)
