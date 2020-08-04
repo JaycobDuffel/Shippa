@@ -7,6 +7,7 @@ import {
   InfoWindow
 } from "react-google-maps/";
 
+
 //access api key with process.env.REACT_APP_MAP_KEY 
 
 //remove hardcoded marker when DB setup 
@@ -23,7 +24,7 @@ export default function WholeMap() {
     </GoogleMap>
   );
 }
-
+//add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
  return (<div style={{ width: "100vw", height: "100vh" }}>
