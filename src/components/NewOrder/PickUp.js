@@ -7,10 +7,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
-export default function PickUp() {
-  const [number, setNumber] = useState('')
-  const [pickupFirst, setPickupFirst] = useState('')
-  const [pickupLast, setPickupLast] = useState('')
+export default function PickUp({ pickupNumber, setPickUpNumber, pickupFirst, setPickupFirst, pickupLast, setPickupLast, pickupAddress, setPickupAddress, pickupCity, setPickupCity,
+  pickupProv, setPickupProv, pickupPostal, setPickupPostal }) {
 
   return (
     <React.Fragment>
@@ -27,6 +25,8 @@ export default function PickUp() {
             label="First name"
             fullWidth
             autoComplete="given-name"
+            value={pickupFirst}
+            onChange={e => setPickupFirst(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -37,13 +37,17 @@ export default function PickUp() {
             label="Last name"
             fullWidth
             autoComplete="family-name"
+            value={pickupLast}
+            onChange={e => setPickupLast(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
           <PhoneInput
             placeholder="Enter phone number"
-            value={number}
-            onChange={setNumber}/>
+            value={pickupNumber}
+            onChange={setPickUpNumber}
+
+            />
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -53,6 +57,8 @@ export default function PickUp() {
             label="Address line 1"
             fullWidth
             autoComplete="shipping address-line1"
+            value={pickupAddress}
+            onChange={e => setPickupAddress(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -63,10 +69,16 @@ export default function PickUp() {
             label="City"
             fullWidth
             autoComplete="shipping address-level2"
+            value={pickupCity}
+            onChange={e => setPickupCity(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+          <TextField id="state" name="state" label="State/Province/Region" fullWidth 
+            value={pickupProv}
+            onChange={e => setPickupProv(e.target.value)} 
+
+            />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -76,6 +88,8 @@ export default function PickUp() {
             label="Zip / Postal code"
             fullWidth
             autoComplete="shipping postal-code"
+            value={pickupPostal}
+            onChange={e => setPickupPostal(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

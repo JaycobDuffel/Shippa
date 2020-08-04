@@ -7,14 +7,15 @@ import Checkbox from '@material-ui/core/Checkbox';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
-export default function DropOff() {
-  const [number, setNumber] = useState('')
+export default function DropOff({ dropoffFirst, setDropoffFirst, number, setNumber, dropoffLast, setDropoffLast, dropoffAddress, setDropoffAddress, dropoffCity, 
+  setDropoffCity, dropoffProv, setDropoffProv, dropoffPostal, setDropoffPostal }) {
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Drop Off Point
       </Typography>
-      <p>Person of contact</p>
+      <p>Person to contact</p>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -24,6 +25,8 @@ export default function DropOff() {
             label="First name"
             fullWidth
             autoComplete="given-name"
+            value={dropoffFirst}
+            onChange={e => setDropoffFirst(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -34,6 +37,8 @@ export default function DropOff() {
             label="Last name"
             fullWidth
             autoComplete="family-name"
+            value={dropoffLast}
+            onChange={e => setDropoffLast(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -50,6 +55,8 @@ export default function DropOff() {
             label="Address line 1"
             fullWidth
             autoComplete="shipping address-line1"
+            value={dropoffAddress}
+            onChange={e => setDropoffAddress(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -60,10 +67,13 @@ export default function DropOff() {
             label="City"
             fullWidth
             autoComplete="shipping address-level2"
+            value={dropoffCity}
+            onChange={e => setDropoffCity(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+          <TextField id="state" name="state" label="State/Province/Region" fullWidth value={dropoffProv}
+            onChange={e => setDropoffProv(e.target.value)} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -73,6 +83,8 @@ export default function DropOff() {
             label="Zip / Postal code"
             fullWidth
             autoComplete="shipping postal-code"
+            value={dropoffPostal}
+            onChange={e => setDropoffPostal(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

@@ -4,6 +4,7 @@ import {
   withScriptjs,
   withGoogleMap,
   Marker,
+  InfoWindow
 } from "react-google-maps/";
 
 //access api key with process.env.REACT_APP_MAP_KEY 

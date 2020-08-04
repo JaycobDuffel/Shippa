@@ -68,49 +68,46 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Pick up point', 'Drop off point', 'Price','PaymentForm', 'Review'];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <PickUp />;
-    case 1:
-      return <DropOff />;
-    case 2:
-      return <Price />;
-    case 3:
-      return <PaymentForm />;
-    case 4:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
-
 export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
+  const [pickupNumber, setPickUpNumber] = useState('')
+  const [pickupFirst, setPickupFirst] = useState('')
+  const [pickupLast, setPickupLast] = useState('')
+  const [pickupAddress, setPickupAddress] = useState('')
+  const [pickupCity, setPickupCity] = useState('')
+  const [pickupProv, setPickupProv] = useState('')
+  const [pickupPostal, setPickupPostal] = useState('')
 
+  const [number, setNumber] = useState('')
+  const [dropoffFirst, setDropoffFirst] = useState('')
+  const [dropoffLast, setDropoffLast] = useState('')
+  const [dropoffAddress, setDropoffAddress] = useState('')
+  const [dropoffCity, setDropoffCity] = useState('')
+  const [dropoffProv, setDropoffProv] = useState('')
+  const [dropoffPostal, setDropoffPostal] = useState('')
 
-  // const onSubmitForm = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const body  = { email, password, name }
-  //     const response = await fetch("http://localhost:5000/users", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json"},
-  //       body: JSON.stringify(body)
-  //     })
-  //     handleClose()
-  //     setEmail("")
-  //     setName("")
-  //     setPassword("")
-  //     setConfirmPassword("")
-  //     setCheckLogin(true)
-  //     console.log(body)
-  //   } catch (error) {
-  //     console.error(error.message)
-  //   }
-  // }
-
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <PickUp pickupFirst={pickupFirst} setPickupFirst={setPickupFirst} pickupNumber={pickupNumber} setPickUpNumber={setPickUpNumber}
+          pickupLast={pickupLast} setPickupLast={setPickupLast} pickupAddress={pickupAddress} setPickupAddress={setPickupAddress}
+          pickupCity={pickupCity} setPickupCity={setPickupCity} pickupProv={pickupProv} setPickupProv={setPickupProv} pickupPostal={pickupPostal} setPickupPostal={setPickupPostal}
+        />;
+      case 1:
+        return <DropOff dropoffFirst={dropoffFirst} setDropoffFirst={setDropoffFirst} number={number} setNumber={setNumber}
+        dropoffLast={dropoffLast} setDropoffLast={setDropoffLast} dropoffAddress={dropoffAddress} setDropoffAddress={setDropoffAddress}
+        dropoffCity={dropoffCity} setDropoffCity={setDropoffCity} dropoffProv={dropoffProv} setDropoffProv={setDropoffProv} dropoffPostal={dropoffPostal} setDropoffPostal={setDropoffPostal} />;
+      case 2:
+        return <Price />;
+      case 3:
+        return <PaymentForm />;
+      case 4:
+        return <Review />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
 
 
   const handleNext = () => {
@@ -134,7 +131,7 @@ export default function Checkout() {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            New Shipment Order
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -35,6 +35,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Review() {
   const classes = useStyles();
+  const [pickupAddress, setPickupAddress] = useState('')
+  
+  const user_id = 4;
+  const end_point = "3303 Merlin Road";
+  const distance = "400 km"
+  const price = "23490"
+  const status = true
+  const start_point = pickupAddress
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    try {
+      const body  = { user_id, start_point, end_point, distance, price, status  }
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(body)
+      })
+      
+      console.log(body)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
 
   return (
     <React.Fragment>
