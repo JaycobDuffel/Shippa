@@ -32,7 +32,7 @@ export default function Nav({ setCheckLogin, checkLogin }) {
         <Toolbar variant="dense"> 
             {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
             {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}
-            <NewOrder />
+            {authUser? <NewOrder /> : '' }
             {authUser? <h1>Hello {authUser.name}</h1> : ""}
         </Toolbar>
           

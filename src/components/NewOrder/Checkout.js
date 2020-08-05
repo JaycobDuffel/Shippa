@@ -14,7 +14,7 @@ import PickUp from './PickUp';
 import DropOff from './DropOff';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-import Price from './Price';
+import Distance from './Distance';
 
 function Copyright() {
   return (
@@ -124,7 +124,7 @@ export default function Checkout() {
         dropoffLast={dropoffLast} setDropoffLast={setDropoffLast} dropoffAddress={dropoffAddress} setDropoffAddress={setDropoffAddress}
         dropoffCity={dropoffCity} setDropoffCity={setDropoffCity} dropoffProv={dropoffProv} setDropoffProv={setDropoffProv} dropoffPostal={dropoffPostal} setDropoffPostal={setDropoffPostal} />;
       case 2:
-        return <Price />;
+        return <Distance pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} /> ;
       case 3:
         return <PaymentForm />;
       case 4:

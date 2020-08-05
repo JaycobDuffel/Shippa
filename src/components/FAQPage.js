@@ -2,15 +2,15 @@ import React from "react";
 
 export default function FAQPage() {
   return (
-    <div class="container py-3">
-      <div class="row">
-        <div class="col-10 mx-auto">
-          <div class="accordion" id="faqExample">
-            <div class="card">
-              <div class="card-header p-2" id="headingOne">
-                <h5 class="mb-0">
+    <div className="container py-3">
+      <div className="row">
+        <div className="col-10 mx-auto">
+          <div className="accordion" id="faqExample">
+            <div className="card">
+              <div className="card-header p-2" id="headingOne">
+                <h5 className="mb-0">
                   <button
-                    class="btn btn-link"
+                    className="btn btn-link"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseOne"
@@ -24,11 +24,11 @@ export default function FAQPage() {
 
               <div
                 id="collapseOne"
-                class="collapse show"
+                className="collapse show"
                 aria-labelledby="headingOne"
                 data-parent="#faqExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   Lorem ipsum dolor sit amet, consectetur
                   adipisicing elit. Fugit, error amet numquam iure provident
                   volupleasecallusptate esse quasi, veritatis totam voluptas
@@ -36,11 +36,11 @@ export default function FAQPage() {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header p-2" id="headingTwo">
-                <h5 class="mb-0">
+            <div className="card">
+              <div className="card-header p-2" id="headingTwo">
+                <h5 className="mb-0">
                   <button
-                    class="btn btn-link collapsed"
+                    className="btn btn-link collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseTwo"
@@ -53,11 +53,11 @@ export default function FAQPage() {
               </div>
               <div
                 id="collapseTwo"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingTwo"
                 data-parent="#faqExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Fugit, error amet numquam iure provident volupleasecallusptate
                   esse quasi, veritatis totam voluptas nostrum quisquam eum
@@ -65,11 +65,11 @@ export default function FAQPage() {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header p-2" id="headingThree">
-                <h5 class="mb-0">
+            <div className="card">
+              <div className="card-header p-2" id="headingThree">
+                <h5 className="mb-0">
                   <button
-                    class="btn btn-link collapsed"
+                    className="btn btn-link collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseThree"
@@ -82,11 +82,11 @@ export default function FAQPage() {
               </div>
               <div
                 id="collapseThree"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingThree"
                 data-parent="#faqExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Fugit, error amet numquam iure provident volupleasecallusptate
                   esse quasi, veritatis totam voluptas nostrum quisquam eum
@@ -94,11 +94,11 @@ export default function FAQPage() {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header p-2" id="headingFour">
-                <h5 class="mb-0">
+            <div className="card">
+              <div className="card-header p-2" id="headingFour">
+                <h5 className="mb-0">
                   <button
-                    class="btn btn-link collapsed"
+                    className="btn btn-link collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseFour"
@@ -111,11 +111,11 @@ export default function FAQPage() {
               </div>
               <div
                 id="collapseFour"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingFour"
                 data-parent="#faqExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Fugit, error amet numquam iure provident volupleasecallusptate
                   esse quasi, veritatis totam voluptas nostrum quisquam eum
@@ -123,11 +123,11 @@ export default function FAQPage() {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header p-2" id="headingFive">
-                <h5 class="mb-0">
+            <div className="card">
+              <div className="card-header p-2" id="headingFive">
+                <h5 className="mb-0">
                   <button
-                    class="btn btn-link collapsed"
+                    className="btn btn-link collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseFive"
@@ -140,11 +140,11 @@ export default function FAQPage() {
               </div>
               <div
                 id="collapseFive"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingFive"
                 data-parent="#faqExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Fugit, error amet numquam iure provident volupleasecallusptate
                   esse quasi, veritatis totam voluptas nostrum quisquam eum
