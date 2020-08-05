@@ -1,69 +1,112 @@
-import React, { useState, Component } from 'react';
-import { GoogleMap, InfoWindow, Marker, GoogleApiWrapper} from "react-google-maps/";
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import calculatePrice from "../helpers/CalculatePrice"
 
-export default function Distance  () {
-    // initializes state
-    let [latitude, setLatitude] = React.useState(-33.7560119)
-    let [longitude, setLongitude] = React.useState(150.6038367)
-    let [address, setAddress] = React.useState('')
-    // searches for new locations
-    const updateCoordinates = (e) => {
-        e.preventDefault()
-       //  const encodedAddress = encodeURI(address)
-        // fetches data from our ap CHECK THAT THE KEY IS SAMEiOR WORKS
-        fetch(`https://google-maps-geocoding.p.rapidapi.com/geocode/json?language=en&address=${encodeURIComponent(address)}`, {
-            "method": "GET",
-            "headers": {
-            "x-rapidapi-host": "google-maps-geocoding.p.rapidapi.com",
-            "x-rapidapi-key": process.env.RAPIDAPI_KEY,
-            },
-            mode: "no-cors"
-        })
-        .then(response => response.json())
-        .then(response => {
-          console.log("got respone>>", response)
-            setLatitude(response.lat)
-            setLongitude(response.long)
-        })
-        .catch(err => console.log(err))
-    }
-    return (
-        <div>
-            The latitude is {latitude}
-            The longitude is {longitude}
-            <form onSubmit={(e) => updateCoordinates(e)}>
-                <div className="form-group">
-                    <label htmlFor="address">Address</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="address"
-                        required
-                        aria-describedby="addressHelp"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        />
-                </div>
-                <button className="btn mb-4 btn-primary" type='submit'>Search Location</button>
-            </form>
-        </div>
-    )
+export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, dropoffCity }) {
+  const [price, setPrice] = React.useState([])
+  // https://cors-anywhere.herokuapp.com/
+  const distanceMatrix = () => {
+    axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?',{
+      params: {
+        units: 'metric',
+        origins: `${pickupAddress} ${pickupCity}`,
+        destinations: `${dropoffAddress} ${dropoffCity}`,
+        key: process.env.REACT_APP_MAP_KEY,
+      }
+    })
+    .then(async (res) => {
+      const distance = res.data.rows[0].elements[0].distance.value
+      const price = calculatePrice(distance)
+      setPrice(price);
+    })
+    .catch((err) => {
+      console.log('err >>', err)
+      alert("Please enter an address")
+    })
+  }
+  useEffect(() => {
+    distanceMatrix()
+  }, [])
+  
+
+  const transportationFee = price[1];
+  const gst = price[1] * .05;
+  const serviceFee = price[1] * .05;
+  const total = transportationFee + gst + serviceFee;
+
+
+  return (
+    <>
+        {/* <form>
+          <div className="form-group">
+          <Grid container>
+          <Typography variant="h6" gutterBottom>
+            Starting Address
+          </Typography>
+          <Grid item xs={12} sm={6}>
+              <TextField
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  required
+                  aria-describedby="addressHelp"
+                  value={`${pickupAddress} ${pickupCity}`}
+                  />
+          </Grid>
+          </Grid>
+          </div>
+          <div className="form-group">
+          <Typography variant="h6" gutterBottom>
+            End Address
+          </Typography>
+          
+              <TextField
+                  required
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  aria-describedby="addressHelp"
+                  value={`${dropoffAddress} ${dropoffCity}`}
+                  />
+          </div>
+        <button className="btn mb-4 btn-primary" type='submit' onClick={distanceMatrix}>Check Price</button> */}
+        {/* </form> */}
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Total Distance:</th>
+      <td><h1>{price[0]} km</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Transportation fee:</th>
+      <td><h1>${(setTimeout(() => {return transportationFee}, 1000)).toFixed(2)} </h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Service Fee:</th>
+      <td><h1>${(setTimeout(() => {return serviceFee}, 500)).toFixed(2)}</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">GST:</th>
+      <td><h1>${(setTimeout(() => {return gst}, 500)).toFixed(2)}</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Total:</th>
+      <td><h1>${(setTimeout(() => {return total}, 500)).toFixed(2)}</h1></td>
+    </tr>
+  </tbody>
+</table>
+
+
+    </>
+  )
 }
-
-
-//take in the origin as address
-
-//convert to lat & long using Google Geocode API
-// const origin = {{ }}
-
-// origins=Bobcaygeon+ON|24+Sussex+Drive+Ottawa+ON
-
-//make a function called getDistance to take the two points and  make a post request
-// const getDistance = () => {
-
-// }
-//api sspits out info in response.rows, response.rows.distance.value (or .text), response.rows.duration.value
-// putting map.js code below for reference/might need to use it here rather than there...?
-
-
-
