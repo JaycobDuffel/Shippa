@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -6,14 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import calculatePrice from "../helpers/CalculatePrice"
 
 export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, dropoffCity }) {
-  // initializes state
-  // let [startAddress, setStartAddress] = React.useState('')
-  // let [endAddress, setEndAddress] = React.useState('')
   const [price, setPrice] = React.useState([])
-  
-  const distanceMatrix = (e) => {
-    e.preventDefault()
-    axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?',{
+  // https://cors-anywhere.herokuapp.com/
+  const distanceMatrix = () => {
+    axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?',{
       params: {
         units: 'metric',
         origins: `${pickupAddress} ${pickupCity}`,
@@ -31,16 +27,22 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
       alert("Please enter an address")
     })
   }
+  useEffect(() => {
+    distanceMatrix()
+  }, [])
   
+
+  const transportationFee = price[1];
+  const gst = price[1] * .05;
+  const serviceFee = price[1] * .05;
+  const total = transportationFee + gst + serviceFee;
+
 
   return (
     <>
-      <h1>{price[0]} km</h1>
-      <h1>${price[1]}</h1>
-    
-        <form onSubmit={(e) => distanceMatrix(e)}>
+        {/* <form>
           <div className="form-group">
-          <Grid container spacing={-5}>
+          <Grid container>
           <Typography variant="h6" gutterBottom>
             Starting Address
           </Typography>
@@ -70,8 +72,41 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
                   value={`${dropoffAddress} ${dropoffCity}`}
                   />
           </div>
-        <button className="btn mb-4 btn-primary" type='submit'>Check Price</button>
-        </form>
+        <button className="btn mb-4 btn-primary" type='submit' onClick={distanceMatrix}>Check Price</button> */}
+        {/* </form> */}
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Total Distance:</th>
+      <td><h1>{price[0]} km</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Transportation fee:</th>
+      <td><h1>${(setTimeout(() => {return transportationFee}, 1000)).toFixed(2)} </h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Service Fee:</th>
+      <td><h1>${(setTimeout(() => {return serviceFee}, 500)).toFixed(2)}</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">GST:</th>
+      <td><h1>${(setTimeout(() => {return gst}, 500)).toFixed(2)}</h1></td>
+    </tr>
+    <tr>
+      <th scope="row">Total:</th>
+      <td><h1>${(setTimeout(() => {return total}, 500)).toFixed(2)}</h1></td>
+    </tr>
+  </tbody>
+</table>
+
+
     </>
   )
 }
