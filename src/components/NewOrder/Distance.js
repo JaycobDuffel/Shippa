@@ -1,52 +1,90 @@
-import React, { useState, Component } from 'react';
-import { GoogleMap, InfoWindow, Marker, GoogleApiWrapper} from "react-google-maps/";
+import React from 'react';
 import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import calculatePrice from "../helpers/CalculatePrice"
+
 export default function Distance () {
   // initializes state
-  let [latitude, setLatitude] = React.useState(0)
-  let [longitude, setLongitude] = React.useState(0)
-  let [address, setAddress] = React.useState('')
+  // let [latitude, setLatitude] = React.useState(0)
+  // let [longitude, setLongitude] = React.useState(0)
+  let [startAddress, setStartAddress] = React.useState('')
+  let [endAddress, setEndAddress] = React.useState('')
+  const [price, setPrice] = React.useState(0)
+  //https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={ORIGIN HERE}&destinations={DESTINATION HERE}&key=YOUR_API_KEY
   
-  const geocode = (e) => {
+  const distanceMatrix = (e) => {
     e.preventDefault()
-    axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+    axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?',{
       params: {
-        address: address,
-        key: process.env.REACT_APP_MAP_KEY
+        units: 'metric',
+        origins: startAddress,
+        destinations: endAddress,
+        key: process.env.REACT_APP_MAP_KEY,
       }
     })
+    .then(async (res) => {
+      // console.log(res.data.rows[0].elements[0].distance.text) //this is the text version of the distance, in '1 km' style
+      // console.log(res.data.rows[0].elements[0].distance.value)
+      const distance = res.data.rows[0].elements[0].distance.value
+      const price = calculatePrice(distance)
+      // console.log("price is here >>> ", price)
+      setPrice(price);
+    })
     .then((res) => {
-      const location = res.data.results[0].geometry.location 
-      console.log('latitude is: ', location.lat)
-      console.log('longitutde is: ', location.lng)
-      setLatitude(location.lat)
-      setLongitude(location.lng)
-      
+        console.log(res)
     })
     .catch((err) => {
       console.log('err >>', err)
       alert("Please enter an address")
     })
-  }
 
+    
+
+  }
+  
   return (
-    <div>
-        <form onSubmit={(e) => geocode(e)}>
-        <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input
-                type="text"
-                className="form-control"
-                id="address"
-                
-                aria-describedby="addressHelp"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                />
-        </div>
-        <button className="btn mb-4 btn-primary" type='submit'>Search Location</button>
+    <React.Fragment>
+     
+        <form onSubmit={(e) => distanceMatrix(e)}>
+          <div className="form-group">
+          <Grid container spacing={-5}>
+          <Typography variant="h6" gutterBottom>
+            Starting Address
+          </Typography>
+          <Grid item xs={12} sm={6}>
+              <TextField
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  required
+                  aria-describedby="addressHelp"
+                  value={startAddress}
+                  onChange={(e) => setStartAddress(e.target.value)}
+                  />
+          </Grid>
+          </Grid>
+          </div>
+          <div className="form-group">
+          <Typography variant="h6" gutterBottom>
+            End Address
+          </Typography>
+          
+              <TextField
+                  required
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  aria-describedby="addressHelp"
+                  value={endAddress}
+                  onChange={(e) => setEndAddress(e.target.value)}
+                  />
+          </div>
+        <button className="btn mb-4 btn-primary" type='submit'>Check Price</button>
         </form>
-    </div>
+        <h1>${price.toFixed(2)}</h1>
+    </React.Fragment>
   )
 }
 
