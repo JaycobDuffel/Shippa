@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />
         </Switch>
-        <Distance />
+        {/* <Distance /> */}
         <Footer/>
         </ScrollToTop>
       </Router>

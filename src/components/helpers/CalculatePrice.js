@@ -1,19 +1,14 @@
-// import React from 'react'
 
 export default function calculatePrice(distance) {
   const base = 100; //100 km * 1000 = 100,000m, $1/km up to first 100km
   const aboveBase = (distance/1000 - base) / 2 ; //difference between base and actual distance, at $0.50/km
 
-  const totalCost = base + aboveBase;
+  let totalCost = (base + aboveBase);
+  totalCost = totalCost.toFixed(2);
+  const value = [distance/1000, totalCost];
 
-  const value = "Your total cost comes to: $" + totalCost;
+  return value;
 
-  return totalCost;
-  // return (
-  //   <div>
-  //     Your price is {totalCost}
-  //   </div>
-  // )
 }
 
 

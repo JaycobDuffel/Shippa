@@ -6,7 +6,7 @@ export default function Price() {
       Total Distance:
       Transportation fee:
       Service Fee:
-      GST;
+      GST:
       Total:
     </div>
   )
