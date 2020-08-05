@@ -94,12 +94,15 @@ app.post('/shipments', async (req, res) => {
     const user_id = req.body.user_id;
     const start_point = req.body.start_point;
     const end_point = req.body.end_point;
-    const distance = req.body.distance;
-    const price = req.body.price;
+    const latitude = req.body.latitude;
+    const longitude = req.body.longitude;
+
+    const distance = req.body.distanceBetween;
+    const price = req.body.cost;
     const status = req.body.status;
 
-    const newShipment = await pool.query("INSERT INTO shipments (user_id, start_point, end_point, distance, price, status) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
-     [user_id, start_point, end_point, distance, price, status]
+    const newShipment = await pool.query("INSERT INTO shipments (user_id, start_point, end_point, latitude, longitude, distance, price, status) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+     [user_id, start_point, end_point, latitude, longitude, distance, price, status]
      )
 
      res.json(newShipment.rows)

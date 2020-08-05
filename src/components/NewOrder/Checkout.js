@@ -86,27 +86,33 @@ export default function Checkout() {
   const [dropoffCity, setDropoffCity] = useState('')
   const [dropoffProv, setDropoffProv] = useState('')
   const [dropoffPostal, setDropoffPostal] = useState('')
-
-  
-
+  const [lat, setLat] = React.useState('')
+  const [lon, setLon] = React.useState('')
+  const [price, setPrice] = React.useState(0)
+  const [distance, setDistance] = React.useState(0)
 
   const user_id = JSON.parse(localStorage.getItem('authUser')).id;
   const end_point = dropoffAddress;
-  const distance = "400 km"
-  const price = "23490"
+  const distanceBetween = distance
+  const cost = price[1]
   const status = true
+  const latitude = lat;
+  const longitude = lon;
   const start_point = pickupAddress;
   
   const onSubmitForm = async (e) => {
+    // console.log("this is lat >>", lat)
+    // console.log("this is longit>>>", lon)
+    // console.log('this is price >>', price)
+    // console.log("this is distance >>", distance)
     try {
-      const body  = { user_id, start_point, end_point, distance, price, status  }
+      const body  = { user_id, start_point, end_point, latitude, longitude, distanceBetween, cost, status  }
         await fetch("http://localhost:5000/shipments", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
-      
-      console.log(body)
+      // console.log(body)
     } catch (error) {
       console.error(error.message)
     }
@@ -124,7 +130,8 @@ export default function Checkout() {
         dropoffLast={dropoffLast} setDropoffLast={setDropoffLast} dropoffAddress={dropoffAddress} setDropoffAddress={setDropoffAddress}
         dropoffCity={dropoffCity} setDropoffCity={setDropoffCity} dropoffProv={dropoffProv} setDropoffProv={setDropoffProv} dropoffPostal={dropoffPostal} setDropoffPostal={setDropoffPostal} />;
       case 2:
-        return <Distance pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} /> ;
+        return <Distance pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} lat={lat} setLat={setLat} lon={lon} setLon={setLon}
+        price={price} setPrice={setPrice} distance={distance} setDistance={setDistance} /> ;
       case 3:
         return <PaymentForm />;
       case 4:
