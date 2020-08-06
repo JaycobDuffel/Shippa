@@ -125,7 +125,7 @@ app.get('/shipments', async (req, res) => {
 app.get('/shipments/:id', async (req,res) => {
   try {
     const { id } = req.params;
-    const shipment = await pool.query("SELECT * FROM shipments WHERE id = $1", [id])
+    const shipment = await pool.query("SELECT * FROM shipments JOIN users ON shipments.user_id = users.id WHERE shipments.id = $1", [id])
 
     res.json(shipment.rows)
   } catch (error) {
