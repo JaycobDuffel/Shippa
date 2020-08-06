@@ -19,7 +19,7 @@ export default function WholeMap() {
  function Map() {
   const [markers, setMarkers] = useState([])
   const [selected, setSelected] = useState(null)
-  const [shipment, setShipment] = useState({})
+  // const [shipment, setShipment] = useState({})
   const shipments =  async () => {
     return axios.get('http://localhost:5000/shipments')
        .then( (res) => {
@@ -44,7 +44,7 @@ export default function WholeMap() {
        .then( (res) => {
          const singleShipment = res.data[0];
         //  console.log("singleShipment is here: ",singleShipment)
-          setShipment(singleShipment)
+          setSelected(singleShipment)
         //  return singleShipment;
          })
         .catch((err) => {
@@ -73,11 +73,11 @@ export default function WholeMap() {
     
     {selected? (
       <InfoWindow 
-      position={{ lat: selected.lat, lng: selected.lng }}
+      position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
       onCloseClick={() => setSelected(null)}
       > 
         <div>
-          <h1>{shipment.id}</h1>
+          <h1>{selected.name}</h1>
         </div>  
       </InfoWindow>) : null}
     </GoogleMap>
