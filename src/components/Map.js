@@ -59,7 +59,7 @@ export default function WholeMap() {
    
   return (
     <GoogleMap
-      defaultZoom={10}
+      defaultZoom={9}
       defaultCenter={{ lat: 53.544388, lng: -113.490929 }}
     >
       {markers.map(marker => <Marker 
@@ -76,9 +76,11 @@ export default function WholeMap() {
       position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
       onCloseClick={() => setSelected(null)}
       > 
-        <div>
-          <h1>{selected.name}</h1>
-        </div>  
+       <div className="infoWindow">
+        <h3><p><strong>{selected.name}</strong></p></h3>
+        <h5><p>{selected.start_point}</p></h5>
+        <h5>{selected.end_point}</h5>
+      </div>
       </InfoWindow>) : null}
     </GoogleMap>
   );
@@ -86,11 +88,11 @@ export default function WholeMap() {
 //add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
- return (<div style={{ width: "100vw", height: "100vh" }}>
+ return (<div style={{ width: "100vh", height: "100vh" }}>
   <WrappedMap
     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
     loadingElement={<div style={{ height: `100%` }} />}
-    containerElement={<div style={{ height: `400px` }} />}
+    containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
     mapElement={<div style={{ height: `100%` }} />}
   />
   
