@@ -133,7 +133,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <MenuIcon />
             
           </IconButton>
-          <a href="https://imgbb.com/"><img src="https://i.ibb.co/kHC7q4N/shippa.png" alt="shippa" border="0" /> </a>
+          <a href="/"><img src="https://i.ibb.co/kHC7q4N/shippa.png" alt="shippa" border="0" /> </a>
           <Home />
             {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
             {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}

@@ -9,7 +9,7 @@ import {
   InfoWindow
 } from "react-google-maps/";
 import axios from 'axios'
-
+import mapStyles from './mapStyles'
 // import Messaging from "./Chat/Messaging";
 
 const api = process.env.REACT_APP_MAP_KEY
@@ -30,9 +30,7 @@ export default function WholeMap({showChat, setShowChat}) {
   const shipments =  async () => {
     return axios.get('http://localhost:5000/shipments')
        .then( (res) => {
-         console.log(res.data)
          const coords = res.data.map((shipment) => {
-           
            return {
              status: shipment.status,
              id: shipment.id,
@@ -68,7 +66,7 @@ export default function WholeMap({showChat, setShowChat}) {
     <GoogleMap
       defaultZoom={9}
       defaultCenter={{ lat: 53.544388, lng: -113.490929 }}
-      
+      defaultOptions={{styles: mapStyles }}
     >
       {markers.map(marker => 
       marker.status === true? <Marker 
@@ -108,7 +106,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
     mapElement={<div style={{ height: `100%` } } />}
-   
+    
   />
   
  </div>              

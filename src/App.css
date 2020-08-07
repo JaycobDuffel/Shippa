@@ -91,3 +91,8 @@
     right: 10px; 
   }
   
+  #map {
+    position: center;
+    margin-left: 400px;
+    padding-left: 400px;
+  }

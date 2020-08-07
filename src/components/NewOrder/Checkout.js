@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Pick up point', 'Drop off point', 'Price','PaymentForm', 'Review'];
+const steps = ['Pick up', 'Drop off', 'Price','PaymentForm', 'Review'];
 
 export default function Checkout() {
   const classes = useStyles();

@@ -36,7 +36,7 @@ export default function App() {
         <ScrollToTop>
         <Nav checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
         <Switch>
-          <Route path="/" exact component={() => <WholeMap setShowChat={handleOpen} showChat={showChat}/>}  />
+          <Route path="/" exact component={() => <WholeMap className="map" setShowChat={handleOpen} showChat={showChat}/>}  />
           <Route path="/faq" exact component={FAQPage} />
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />

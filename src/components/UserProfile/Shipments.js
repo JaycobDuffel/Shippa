@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 export default function Shipments() {
   const classes = useStyles();
-  const [shipmentstatus, setShipmentStatus] = useState('');
+  const [value, setValue] = useState('');
   const [userShipments, setUserShipments] = useState([]);
 
   const id = JSON.parse(localStorage.getItem('authUser')).id;
@@ -78,23 +78,12 @@ export default function Shipments() {
      axios.put(`http://localhost:5000/shipments/${id}`, body)
    }
 
+   
+   
+
    useEffect(() => { 
      getUserShipments(id)
    }, [userShipments, id])
-
-//    [
-//     {
-//         "id": 23,
-//         "user_id": 4,
-//         "start_point": "860 Langford Pkwy",
-//         "end_point": "3199 Cliffe Ave",
-//         "latitude": "48.4438125",
-//         "longitude": "-123.5055607",
-//         "distance": "206402",
-//         "price": "153.2",
-//         "status": true
-//     }
-// ]
 
   return (
     <TableContainer component={Paper}>
@@ -126,12 +115,11 @@ export default function Shipments() {
               <StyledTableCell align="center">
               <FormControl variant="filled" className={classes.formControl}>
                 <InputLabel htmlFor="filled-age-native-simple">Status</InputLabel>
-                <Select style={{width:'120%', height:'45px'}}
-                >
-                  <option aria-label="None" value={1} />
-                  <option value={1}>Open</option>
-                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment)}}>Assigned</option>
-                  <option value={3}>Delivered</option>
+                <Select style={{width:'15vh', height:'45px'}} id="shipSelect" value={value}>
+                  <option aria-label="None" value='Open' />
+                  <option value={1} onClick={() => { setValue('Open')} }>Open</option>
+                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment); setValue('Assigned')}}>Assigned</option>
+                  <option value={3} onClick={() => { setValue('Delivered')} }>Delivered</option>
                 </Select>
               </FormControl>
               </StyledTableCell>

@@ -27,95 +27,51 @@ const useRowStyles = makeStyles({
   },
 });
 
-// const products = [
-//   { name: 'Transportation Fee', desc: '', price: '$9.99' },
-//   { name: 'Service Fee', desc: '', price: '$3.45' },
-//   { name: 'GST', desc: 'Something else', price: '$6.51' },
-//   { name: 'Total', desc: 'Best thing of all', price: '$14.11' },
-//   { name: 'Shipping', desc: '', price: 'Free' },
-// ];
-const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+function handleToken(token, addresses) {
+  console.log({token, addresses})
+}
 
-const useStyles = makeStyles((theme) => ({
-  listItem: {
-    padding: theme.spacing(1, 0),
-  },
-  total: {
-    fontWeight: 700,
-  },
-  title: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
-// pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} lat={lat} setLat={setLat} lon={lon} setLon={setLon}
-//         price={price} setPrice={setPrice} distance={distance} setDistance={setDistance}
-
-export default function Review( props) {
-  // const classes = useStyles();
-  // const [pickupAddress, setPickupAddress] = useState('')
-  // const { row } = props;
-  console.log("props.pickupFirst from Review.js: >>>>> ",props.pickupFirst)
-  const [open, setOpen] = React.useState(false);
+export default function Review(props) {
+  console.log("props from Review: ", props)
   const classes = useRowStyles();
-  const products = [
-    { name: 'Transportation Fee', desc: '', price: props.price[1].toFixed(2) },
-    { name: 'Service Fee', desc: '', price: ((props.price[1])*0.05).toFixed(2)  },
-    { name: 'GST', desc: '', price: ((props.price[1])*0.05).toFixed(2) },
-    { name: 'Total', desc: '', price: (props.price[1] + (props.price[1] * 0.05) + ((props.price[1] + (props.price[1] * 0.05)) * 0.05)).toFixed(2) }
-  ];
-
-  return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Order summary
-      </Typography>
-      <List disablePadding>
-        {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
-      </List>
-    </React.Fragment>
-  );
+  if (props.price) {
+    const products = [
+      { name: 'Transportation Fee', desc: '', price: props.price[1].toFixed(2) },
+      { name: 'Service Fee', desc: '', price: ((props.price[1])*0.05).toFixed(2)  },
+      { name: 'GST', desc: '', price: ((props.price[1])*0.05).toFixed(2) },
+      { name: 'Total', desc: '', price: (props.price[1] + (props.price[1] * 0.05) + ((props.price[1] + (props.price[1] * 0.05)) * 0.05)).toFixed(2) }
+    ];
+  
+    return (
+      <React.Fragment>
+        <Typography variant="h6" gutterBottom>
+          Order Summary
+        </Typography>
+        <List disablePadding>
+          {products.map((product) => (
+            <ListItem className={classes.listItem} key={product.name}>
+              <ListItemText primary={product.name} secondary={product.desc} />
+              <Typography variant="body2">{product.price}</Typography>
+            </ListItem>
+          ))}
+        </List>
+        <Typography variant="h6" gutterBottom>
+          Please confirm by clicking Place Order: 
+        </Typography>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <Typography variant="h6" gutterBottom>
+          Please enter shipment details for a quote.
+        </Typography>
+      </React.Fragment>
+    );
+  }
 }
 
 
 
 
-//here for posterity. Remove before merge to master
-
-{/* <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Billing Address
-          </Typography>
-          <Typography gutterBottom>{props.pickupFirst} {props.pickupLast}</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Payment details
-          </Typography>
-          <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{props.pickupFirst} {props.pickupLast}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid> */}

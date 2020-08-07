@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 // const message = `Truncation should be conditionally applicable on this long line of text
 //  as this is a much longer line than what the container can support. `;
 
-const socket = io.connect('http://localhost:4000') //connects to the backend (making helpful notes for dumbdumbs like me)
+const socket = io.connect('http://localhost:4000') 
 
 export default function Messaging(props) {
   //setting default states and use useState
@@ -106,35 +106,3 @@ export default function Messaging(props) {
 }
 
 
-{/* <h3>
-          {name}: <span>{message}</span>
-        </h3> */}
-
-{/* <div>
-      <form onSubmit={onMessageSubmit}>
-        <h1>Messenger</h1>
-        <div className="name-field">
-          <TextField 
-          name="name" 
-          onChange={e => onTextChange(e)} 
-          value={state.name} 
-          label="name" />
-          {renderChat()}
-        </div>
-        <div >
-          <TextField 
-          name="message" 
-          onChange={e => onTextChange(e)} 
-          value={state.message}
-          id="outlined-multiline-static"
-          variant="outlined"
-          label="message"
-           />
-        </div>
-        <button>Send Message</button>
-      </form>
-      <div className="render-chat">
-        <h1>Chat Log</h1>
-        {renderChat()}
-      </div>
-    </div> */}
