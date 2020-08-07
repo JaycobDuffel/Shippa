@@ -22,7 +22,9 @@
     "react-phone-number-input": "^3.0.25",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "socket.io": "^2.3.0",
+    "talkjs": "^0.14.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

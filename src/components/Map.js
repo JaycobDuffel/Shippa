@@ -8,6 +8,7 @@ import {
 } from "react-google-maps/";
 import axios from 'axios'
 import { set } from "lodash";
+// import Messaging from "./Chat/Messaging";
 
 const api = process.env.REACT_APP_MAP_KEY
 
@@ -61,6 +62,7 @@ export default function WholeMap() {
     <GoogleMap
       defaultZoom={9}
       defaultCenter={{ lat: 53.544388, lng: -113.490929 }}
+      
     >
       {markers.map(marker => <Marker 
         key={marker.id} 
@@ -80,6 +82,7 @@ export default function WholeMap() {
         <h3><p><strong>{selected.name}</strong></p></h3>
         <h5><p>{selected.start_point}</p></h5>
         <h5>{selected.end_point}</h5>
+        <button>Chat about this shipment</button>
       </div>
       </InfoWindow>) : null}
     </GoogleMap>
@@ -88,12 +91,13 @@ export default function WholeMap() {
 //add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
- return (<div style={{ width: "100vh", height: "100vh" }}>
+ return (<div style={{ width: "100vh", height: "100vh", position:"relative",zIndex: '1' }}>
   <WrappedMap
     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
-    mapElement={<div style={{ height: `100%` }} />}
+    mapElement={<div style={{ height: `100%` } } />}
+   
   />
   
  </div>              
