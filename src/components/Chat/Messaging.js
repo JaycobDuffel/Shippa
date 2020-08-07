@@ -32,6 +32,7 @@ export default function Messaging() {
   //setting default states and use useState
   const [state, setState] = useState({ message: '', name: '' }) 
   const [chat, setChat] = useState([])
+  const [showChat, setShowChat] = useState(false)
   const classes = useStyles();
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function Messaging() {
       setChat([...chat, { name, message }]);
     })
   })
+  
 
   const onTextChange = e => {
     setState({...state, [e.target.name]: e.target.value})
@@ -70,35 +72,35 @@ export default function Messaging() {
     ))
   }
 
+    return (
+      <div className={classes.root} id='chatbox'>
+      <Box height="300px" overflow="auto" bottom="30px" right="30px">
+            {renderChat()}
+        <form onSubmit={onMessageSubmit}>
+         <h1>Messenger</h1>
+          <div className="name-field">
+            <TextField 
+            name="name" 
+            onChange={e => onTextChange(e)} 
+            value={state.name} 
+            label="name" />
+          </div>
+          <div >
+            <TextField 
+            name="message" 
+            onChange={e => onTextChange(e)} 
+            value={state.message}
+            id="outlined-multiline-static"
+            variant="outlined"
+            label="message"
+             />
+          </div>
+          <button>Send Message</button>
+        </form>
+      </Box>
+      </div>
+    )
 
-  return (
-    <div className={classes.root} id='chatbox'>
-    <Box height="300px" overflow="auto" bottom="30px" right="30px">
-          {renderChat()}
-      <form onSubmit={onMessageSubmit}>
-       <h1>Messenger</h1>
-        <div className="name-field">
-          <TextField 
-          name="name" 
-          onChange={e => onTextChange(e)} 
-          value={state.name} 
-          label="name" />
-        </div>
-        <div >
-          <TextField 
-          name="message" 
-          onChange={e => onTextChange(e)} 
-          value={state.message}
-          id="outlined-multiline-static"
-          variant="outlined"
-          label="message"
-           />
-        </div>
-        <button>Send Message</button>
-      </form>
-    </Box>
-    </div>
-  )
 }
 
 

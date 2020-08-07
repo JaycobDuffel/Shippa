@@ -19,9 +19,12 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Signin from './Signin.js'
 import Signup from './Signup.js'
+import Home from './Home'
 import NewOrder from './NewOrder/NewOrder'
 import Signout from './Signout';
 import { AuthContext } from '../contexts/authContext';
+import { Link } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
@@ -125,10 +128,10 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             })}
           >
             <MenuIcon />
+            
           </IconButton>
-          <Typography variant="h6" noWrap>
-          
-          </Typography>
+          <a href="https://imgbb.com/"><img src="https://i.ibb.co/kHC7q4N/shippa.png" alt="shippa" border="0" /> </a>
+          <Home />
             {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
             {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}
             {authUser? <NewOrder /> : '' }
@@ -155,21 +158,13 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button >
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText />
+              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
+                Shipments
+              </Link>
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
         </List>
       </Drawer>
     </div>

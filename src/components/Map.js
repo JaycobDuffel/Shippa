@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import {
   GoogleMap,
   withScriptjs,
@@ -8,19 +10,30 @@ import {
 } from "react-google-maps/";
 import axios from 'axios'
 import { set } from "lodash";
+import Messaging from './Chat/Messaging.js';
+
 // import Messaging from "./Chat/Messaging";
 
 const api = process.env.REACT_APP_MAP_KEY
 
 //{ lat: 53.631611, lng: -113.323975 }, { lat:53.598550, lng:-113.489080 }
-export default function WholeMap() {
+export default function WholeMap({showChat, setShowChat}) {
   // const [markers, setMarkers] = useState([])
-  
 
- function Map() {
-  const [markers, setMarkers] = useState([])
-  const [selected, setSelected] = useState(null)
-  // const [shipment, setShipment] = useState({})
+  function Map() {
+    const [markers, setMarkers] = useState([]);
+    const [selected, setSelected] = useState(null);
+    const [showChat, setShowChat] = useState(false);
+
+    const handleOpen = () => {
+      debugger;
+      setShowChat(true);
+    }
+
+    const handleClose = () => {
+      setShowChat(false);
+    }
+
   const shipments =  async () => {
     return axios.get('http://localhost:5000/shipments')
        .then( (res) => {
@@ -55,9 +68,8 @@ export default function WholeMap() {
    
    useEffect(() => { 
      shipments()
-   }, [])
-   
-   
+   }, []);
+ 
   return (
     <GoogleMap
       defaultZoom={9}
@@ -73,7 +85,7 @@ export default function WholeMap() {
       />
     )}
     
-    {selected? (
+    {selected ? (
       <InfoWindow 
       position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
       onCloseClick={() => setSelected(null)}
@@ -82,7 +94,10 @@ export default function WholeMap() {
         <h3><p><strong>{selected.name}</strong></p></h3>
         <h5><p>{selected.start_point}</p></h5>
         <h5>{selected.end_point}</h5>
-        <button>Chat about this shipment</button>
+        <Button variant="contained" onClick={() => {
+          handleOpen();
+        }}>Chat about this shipment</Button>
+        
       </div>
       </InfoWindow>) : null}
     </GoogleMap>
