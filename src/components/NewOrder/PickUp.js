@@ -12,6 +12,7 @@ export default function PickUp({ pickupNumber, setPickUpNumber, pickupFirst, set
 
   return (
     <React.Fragment>
+
       <Typography variant="h6" gutterBottom>
         Pick Up Point
       </Typography>

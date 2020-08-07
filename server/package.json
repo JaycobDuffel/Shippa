@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "netlify dev",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +13,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "pg-promise": "^10.5.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

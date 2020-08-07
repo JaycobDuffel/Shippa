@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Pick up point', 'Drop off point', 'Price','PaymentForm', 'Review'];
+const steps = ['Pick up', 'Drop off', 'Price','PaymentForm', 'Review'];
 
 export default function Checkout() {
   const classes = useStyles();
@@ -103,10 +103,7 @@ export default function Checkout() {
   const start_point = pickupAddress;
   
   const onSubmitForm = async (e) => {
-    // console.log("this is lat >>", lat)
-    // console.log("this is longit>>>", lon)
-    // console.log('this is price >>', price)
-    // console.log("this is distance >>", distance)
+   
     try {
       const body  = { user_id, start_point, end_point, latitude, longitude, distanceBetween, cost, status  }
         await fetch("http://localhost:5000/shipments", {
@@ -114,7 +111,6 @@ export default function Checkout() {
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
-      // console.log(body)
     } catch (error) {
       console.error(error.message)
     }
@@ -137,7 +133,8 @@ export default function Checkout() {
       case 3:
         return <PaymentForm />;
       case 4:
-        return <Review />;
+        return <Review pickupFirst={pickupFirst} pickupLast={pickupLast} pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} lat={lat} setLat={setLat} lon={lon} setLon={setLon}
+        price={price} setPrice={setPrice} distance={distance} setDistance={setDistance} />;
       default:
         throw new Error('Unknown step');
     }

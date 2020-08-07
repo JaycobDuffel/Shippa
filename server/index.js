@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const http = require('http').createServer(app);
+const io = require('socket.io')(http)
+
 
 //middleware
 app.use(cors());
@@ -136,7 +139,7 @@ app.get('/shipments/:id', async (req,res) => {
 app.get('/usershipments/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const shipmentsByUser = await pool.query("SELECT * FROM shipments WHERE shipments.user_id = $1", [id])
+    const shipmentsByUser = await pool.query("SELECT * FROM shipments WHERE shipments.user_id = $1 ORDER BY shipments.id", [id])
 
     res.json(shipmentsByUser.rows)
   } catch (error) {

@@ -26,8 +26,8 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
     })
     .catch((err) => {
       console.log('err >>', err)
-      // alert("Please enter an address")
-      alert("We're sorry, there seems to have been an error: ", err)
+      alert("Please enter an address in the correct format. We can only help with the right information.")
+      // alert("We're sorry, there seems to have been an error: ", err)
     })
   }
 
@@ -47,7 +47,7 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
     })
     .catch((err) => {
       console.log('err >>', err)
-      alert("We're sorry, you don't seem to exist on earth...try Mars?", err)
+      alert("We're sorry, we could not calculate the shipment distance. ", err)
     })
   }
 
