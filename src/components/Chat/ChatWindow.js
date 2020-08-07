@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Launcher} from 'react-chat-window';
 import io from 'socket.io-client';
 
- 
-const socket = io.connect('http://localhost:4000')
-
 class Demo extends Component {
  
   // const [state, setState] = useState({ message: '', name: '' }) 

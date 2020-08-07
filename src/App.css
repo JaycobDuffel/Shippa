@@ -82,9 +82,12 @@
 
 
   #chatbox {
+    background-color: white;
+    z-index: 2;
+    border: solid;
     width: 300px;
     position: fixed;
-    bottom: 30px;
-    right: 0px; 
+    bottom: 100px;
+    right: 10px; 
   }
   

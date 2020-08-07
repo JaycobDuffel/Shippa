@@ -101,10 +101,7 @@ export default function Checkout() {
   const start_point = pickupAddress;
   
   const onSubmitForm = async (e) => {
-    // console.log("this is lat >>", lat)
-    // console.log("this is longit>>>", lon)
-    // console.log('this is price >>', price)
-    // console.log("this is distance >>", distance)
+   
     try {
       const body  = { user_id, start_point, end_point, latitude, longitude, distanceBetween, cost, status  }
         await fetch("http://localhost:5000/shipments", {
@@ -112,7 +109,6 @@ export default function Checkout() {
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
-      // console.log(body)
     } catch (error) {
       console.error(error.message)
     }

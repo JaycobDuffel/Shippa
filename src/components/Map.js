@@ -9,8 +9,6 @@ import {
   InfoWindow
 } from "react-google-maps/";
 import axios from 'axios'
-import { set } from "lodash";
-import Messaging from './Chat/Messaging.js';
 
 // import Messaging from "./Chat/Messaging";
 
@@ -23,16 +21,11 @@ export default function WholeMap({showChat, setShowChat}) {
   function Map() {
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
-    const [showChat, setShowChat] = useState(false);
 
-    const handleOpen = () => {
-      debugger;
-      setShowChat(true);
-    }
-
-    const handleClose = () => {
-      setShowChat(false);
-    }
+  const handleClick = (e) => {
+    // e.preventDefault;
+    setShowChat(true);
+  }
 
   const shipments =  async () => {
     return axios.get('http://localhost:5000/shipments')
@@ -95,7 +88,7 @@ export default function WholeMap({showChat, setShowChat}) {
         <h5><p>{selected.start_point}</p></h5>
         <h5>{selected.end_point}</h5>
         <Button variant="contained" onClick={() => {
-          handleOpen();
+          handleClick();
         }}>Chat about this shipment</Button>
         
       </div>

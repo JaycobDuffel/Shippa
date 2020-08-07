@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -28,23 +31,12 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
     margin: 100,
-    maxWidth: 800
+    maxWidth: 1000,
+    marginLeft: 300
   },
 });
 
@@ -66,9 +58,39 @@ export default function Shipments() {
        })
    }
 
+   const deleteUserShipment = (id) => {
+    axios.delete(`http://localhost:5000/shipments/${id}`)
+   }
+
+   const updateStatus = (id) => {
+  //   return axios.put(`/api/appointments/${id}`, { interview })
+  //   .then(() => {
+  //     numOfSpots(id, -1);
+  //     setState({ ...state, appointments });
+  //   });
+  // }
+
+  axios({
+    method: 'put',
+    url: `http://localhost:5000/shipments/${id}`,
+    data: {
+      status: false
+    },
+    config: {headers: {'Content-Type': 'application/json'}
+  }
+  })
+  .then(function (response) {
+    if (response.status === 200) {
+      console.log("User Updated")
+    }
+  })
+  
+
+   }
+
    useEffect(() => { 
      getUserShipments(id)
-   }, [])
+   }, [userShipments, id])
 
 //    [
 //     {
@@ -90,12 +112,13 @@ export default function Shipments() {
         <TableHead>
           <TableRow>
             <StyledTableCell>Shipment id</StyledTableCell>
-            <StyledTableCell align="right">Start Point</StyledTableCell>
-            <StyledTableCell align="right">End Point</StyledTableCell>
-            <StyledTableCell align="right">Distance</StyledTableCell>
-            <StyledTableCell align="right">Cost</StyledTableCell>
-            <StyledTableCell align="right">Edit</StyledTableCell>
-            <StyledTableCell align="right">Delete</StyledTableCell>
+            <StyledTableCell align="center">Start Point</StyledTableCell>
+            <StyledTableCell align="center">End Point</StyledTableCell>
+            <StyledTableCell align="center">Distance (km)</StyledTableCell>
+            <StyledTableCell align="center">Cost (CAD)</StyledTableCell>
+            <StyledTableCell align="center">Edit</StyledTableCell>
+            <StyledTableCell align="center">Delete</StyledTableCell>
+            <StyledTableCell align="center" style={{width:'20%'}}>Status</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -104,12 +127,24 @@ export default function Shipments() {
               <StyledTableCell component="th" scope="row">
                 {shipment.id}
               </StyledTableCell>
-              <StyledTableCell align="right">{shipment.start_point}</StyledTableCell>
-              <StyledTableCell align="right">{shipment.end_point}</StyledTableCell>
-              <StyledTableCell align="right">{shipment.distance}</StyledTableCell>
-              <StyledTableCell align="right">{shipment.price}</StyledTableCell>
-              <StyledTableCell align="right"><Button variant="contained">Edit</Button></StyledTableCell>
-              <StyledTableCell align="right"><Button variant="contained" color="secondary" >Delete</Button></StyledTableCell>
+              <StyledTableCell align="center">{shipment.start_point}</StyledTableCell>
+              <StyledTableCell align="center">{shipment.end_point}</StyledTableCell>
+              <StyledTableCell align="center">{shipment.distance/1000}</StyledTableCell>
+              <StyledTableCell align="center">{shipment.price}</StyledTableCell>
+              <StyledTableCell align="center"><Button variant="contained">Edit</Button></StyledTableCell>
+              <StyledTableCell align="center"><Button variant="contained" color="secondary" onClick={() => {deleteUserShipment(shipment.id)}}>Delete</Button></StyledTableCell>
+              <StyledTableCell align="center">
+              <FormControl variant="filled" className={classes.formControl}>
+                <InputLabel htmlFor="filled-age-native-simple">Status</InputLabel>
+                <Select style={{width:'120%', height:'45px'}}
+                >
+                  <option aria-label="None" value="" />
+                  <option value={1} onClick={() => {updateStatus(shipment.id)}}  >Assigned</option>
+                  <option  value={2}  >Open</option>
+                  <option value={3}>Delivered</option>
+                </Select>
+              </FormControl>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
@@ -117,3 +152,4 @@ export default function Shipments() {
     </TableContainer>
   );
 }
+

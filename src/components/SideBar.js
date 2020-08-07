@@ -24,7 +24,10 @@ import NewOrder from './NewOrder/NewOrder'
 import Signout from './Signout';
 import { AuthContext } from '../contexts/authContext';
 import { Link } from 'react-router-dom';
-
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const drawerWidth = 240;
 
@@ -159,10 +162,31 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
         <Divider />
         <List>
             <ListItem button >
-              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemIcon><LocalShippingIcon /></ListItemIcon>
               <ListItemText />
               <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
                 Shipments
+              </Link>
+            </ListItem>
+            <ListItem button >
+              <ListItemIcon><ReceiptIcon /></ListItemIcon>
+              <ListItemText />
+              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
+                Invoices
+              </Link>
+            </ListItem>
+            <ListItem button >
+              <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+              <ListItemText />
+              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
+                Profile
+              </Link>
+            </ListItem>
+            <ListItem button >
+              <ListItemIcon><SettingsIcon /></ListItemIcon>
+              <ListItemText />
+              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
+                Settings
               </Link>
             </ListItem>
         </List>

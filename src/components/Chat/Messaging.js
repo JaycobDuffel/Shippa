@@ -23,16 +23,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
+// const message = `Truncation should be conditionally applicable on this long line of text
+//  as this is a much longer line than what the container can support. `;
 
 const socket = io.connect('http://localhost:4000') //connects to the backend (making helpful notes for dumbdumbs like me)
 
-export default function Messaging() {
+export default function Messaging(props) {
   //setting default states and use useState
   const [state, setState] = useState({ message: '', name: '' }) 
   const [chat, setChat] = useState([])
-  const [showChat, setShowChat] = useState(false)
+  // const [showChat, setShowChat] = useState(false)
   const classes = useStyles();
 
   useEffect(() => {
@@ -96,6 +96,7 @@ export default function Messaging() {
              />
           </div>
           <button>Send Message</button>
+          <button onClick={(e) => {props.setShowChat()}} >Close</button>
         </form>
       </Box>
       </div>

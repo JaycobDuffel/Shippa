@@ -21,6 +21,14 @@ export default function App() {
   const [checkLogin, setCheckLogin] = useState(true);
   const [showChat, setShowChat] = useState(false);
 
+  const handleOpen = (name) => {
+    setShowChat(name);  
+  }
+
+  const handleClose = () => {
+    setShowChat(false);
+  }
+
   return (
     <Fragment>
      <AuthContextProvider checkLogin={checkLogin} setCheckLogin={setCheckLogin}>
@@ -28,7 +36,7 @@ export default function App() {
         <ScrollToTop>
         <Nav checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
         <Switch>
-          <Route path="/" exact component={WholeMap} setShowChat={setShowChat} showChat={showChat}/>
+          <Route path="/" exact component={() => <WholeMap setShowChat={handleOpen} showChat={showChat}/>}  />
           <Route path="/faq" exact component={FAQPage} />
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />
@@ -37,7 +45,7 @@ export default function App() {
         {/* <ChatWindow /> */}
         {/* <Distance /> */}
 
-        {showChat === false ? <Messaging setShowChat={setShowChat} showChat={showChat}/> : ''}
+        {showChat  ? <Messaging setShowChat={handleClose} showChat={showChat} /> : ''}
         <Footer/>
         </ScrollToTop>
       </Router>
