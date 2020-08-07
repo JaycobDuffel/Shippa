@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 
 export default function Shipments() {
   const classes = useStyles();
-
+  const [shipmentstatus, setShipmentStatus] = useState('');
   const [userShipments, setUserShipments] = useState([]);
 
   const id = JSON.parse(localStorage.getItem('authUser')).id;
@@ -62,30 +62,20 @@ export default function Shipments() {
     axios.delete(`http://localhost:5000/shipments/${id}`)
    }
 
-   const updateStatus = (id) => {
-  //   return axios.put(`/api/appointments/${id}`, { interview })
-  //   .then(() => {
-  //     numOfSpots(id, -1);
-  //     setState({ ...state, appointments });
-  //   });
-  // }
+   const updateStatus = (id, shipment) => {
 
-  axios({
-    method: 'put',
-    url: `http://localhost:5000/shipments/${id}`,
-    data: {
+    const body = {
+      user_id: shipment.user_id,
+      start_point: shipment.start_point,
+      end_point: shipment.end_point,
+      latitude: shipment.latitude,
+      longitude: shipment.longitude,
+      distance: shipment.distance,
+      price: shipment.price,
       status: false
-    },
-    config: {headers: {'Content-Type': 'application/json'}
-  }
-  })
-  .then(function (response) {
-    if (response.status === 200) {
-      console.log("User Updated")
     }
-  })
-  
 
+     axios.put(`http://localhost:5000/shipments/${id}`, body)
    }
 
    useEffect(() => { 
@@ -138,9 +128,9 @@ export default function Shipments() {
                 <InputLabel htmlFor="filled-age-native-simple">Status</InputLabel>
                 <Select style={{width:'120%', height:'45px'}}
                 >
-                  <option aria-label="None" value="" />
-                  <option value={1} onClick={() => {updateStatus(shipment.id)}}  >Assigned</option>
-                  <option  value={2}  >Open</option>
+                  <option aria-label="None" value={1} />
+                  <option value={1}>Open</option>
+                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment)}}>Assigned</option>
                   <option value={3}>Delivered</option>
                 </Select>
               </FormControl>

@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 2,
     overflow: 'hidden',
     padding: theme.spacing(0, 3),
   },
@@ -75,7 +75,7 @@ export default function Messaging(props) {
     return (
       <div className={classes.root} id='chatbox'>
       <Box height="300px" overflow="auto" bottom="30px" right="30px">
-            {renderChat()}
+            
         <form onSubmit={onMessageSubmit}>
          <h1>Messenger</h1>
           <div className="name-field">
@@ -85,6 +85,7 @@ export default function Messaging(props) {
             value={state.name} 
             label="name" />
           </div>
+          {renderChat()}
           <div >
             <TextField 
             name="message" 

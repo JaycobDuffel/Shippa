@@ -30,10 +30,11 @@ export default function WholeMap({showChat, setShowChat}) {
   const shipments =  async () => {
     return axios.get('http://localhost:5000/shipments')
        .then( (res) => {
-         // console.log(res.data)
+         console.log(res.data)
          const coords = res.data.map((shipment) => {
            
            return {
+             status: shipment.status,
              id: shipment.id,
              lat: Number(shipment.latitude),
              lng: Number(shipment.longitude)
@@ -69,13 +70,15 @@ export default function WholeMap({showChat, setShowChat}) {
       defaultCenter={{ lat: 53.544388, lng: -113.490929 }}
       
     >
-      {markers.map(marker => <Marker 
+      {markers.map(marker => 
+      marker.status === true? <Marker 
         key={marker.id} 
         position={{lat: marker.lat, lng: marker.lng}} 
         onClick={() => {
           setSelected(marker); shipmentToShow(marker.id)
         }}
-      />
+        /> : ""
+          
     )}
     
     {selected ? (

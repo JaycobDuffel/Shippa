@@ -131,7 +131,8 @@ export default function Checkout() {
       case 3:
         return <PaymentForm />;
       case 4:
-        return <Review />;
+        return <Review pickupFirst={pickupFirst} pickupLast={pickupLast} pickupAddress={pickupAddress} pickupCity={pickupCity} dropoffAddress={dropoffAddress} dropoffCity={dropoffCity} lat={lat} setLat={setLat} lon={lon} setLon={setLon}
+        price={price} setPrice={setPrice} distance={distance} setDistance={setDistance} />;
       default:
         throw new Error('Unknown step');
     }
