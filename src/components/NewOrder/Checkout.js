@@ -90,6 +90,8 @@ export default function Checkout() {
   const [lon, setLon] = React.useState('')
   const [price, setPrice] = React.useState(0)
   const [distance, setDistance] = React.useState(0)
+  const [markers, setMarkers] = useState([])
+
 
   const user_id = JSON.parse(localStorage.getItem('authUser')).id;
   const end_point = dropoffAddress;
@@ -196,7 +198,7 @@ export default function Checkout() {
                     activeStep === steps.length - 1 ? <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => {handleNext(); onSubmitForm();}}
+                    onClick={() => {handleNext(); onSubmitForm(); setMarkers((prev) => [...prev, {lat:lat, lng:lon}])}}
                     className={classes.button}
                     // onSubmit={onSubmitForm}
                   >Place order</Button> : <Button
