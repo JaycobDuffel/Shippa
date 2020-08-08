@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Button } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 
@@ -30,13 +30,22 @@ export default function ContactUs() {
   const classes = useStyles()
 
   return (
-    <IconButton variant="contained" className={classes.menuButton} color="inherit">
-      <Typography component="h1" variant="h5">
-        <Link style={{color: 'black', textDecoration: 'none'}} to='/contact'>
-          Contact Us
-        </Link>
-      </Typography>
-    </IconButton>
+    <IconButton variant="contained">
+        <Typography component="h1" variant="h5">
+          <Button
+            variant="outlined"
+            style={{
+              border: "#6B4C86 2px solid",
+              width: "105%",
+              height: "105%",
+            }}
+          >
+            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/">
+              New Shipment
+            </Link>
+          </Button>
+        </Typography>
+      </IconButton>
   )
 
   

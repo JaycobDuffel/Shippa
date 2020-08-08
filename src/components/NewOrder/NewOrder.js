@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
-import IconButton from '@material-ui/core/IconButton';
-import Dialog from '@material-ui/core/Dialog';
-import { makeStyles } from '@material-ui/core/styles';
-import Checkout from './Checkout';
-
+import React, { useState } from "react";
+import Checkout from "./Checkout";
+import { Link } from "react-router-dom";
+import {
+  Typography,
+  Button,
+  IconButton,
+  Dialog,
+  makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -26,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NewOrder() {
-  const [open, setOpen] = useState(false)
-  
+  const [open, setOpen] = useState(false);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -39,12 +43,29 @@ export default function NewOrder() {
 
   return (
     <div>
-      <IconButton variant="contained" className={classes.menuButton} color="inherit"  onClick={handleClickOpen}>
-        New Order
+      <IconButton variant="contained" onClick={handleClickOpen}>
+        <Typography component="h1" variant="h5">
+          <Button
+            variant="outlined"
+            style={{
+              border: "#6B4C86 2px solid",
+              width: "105%",
+              height: "105%",
+            }}
+          >
+            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/">
+              New Shipment
+            </Link>
+          </Button>
+        </Typography>
       </IconButton>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <Checkout/>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <Checkout />
       </Dialog>
     </div>
-  )
+  );
 }

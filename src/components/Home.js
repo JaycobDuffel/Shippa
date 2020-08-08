@@ -1,23 +1,23 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -25,20 +25,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Home() {
-  const classes = useStyles()
+  const classes = useStyles();
 
-    return (
-      <IconButton variant="contained" className={classes.menuButton} color="inherit">
-        <Typography component="h1" variant="h5">
-          <Link style={{color: 'black', textDecoration: 'none'}} to='/'>
+  return (
+    <IconButton variant="contained" className={classes.menuButton}>
+      <Typography component="h1" variant="h5">
+        <Button
+          variant="outlined"
+          style={{ border: "#6B4C86 2px solid", width: "105%", height: "105%" }}
+        >
+          <Link
+            style={{
+              color: "#6B4C86",
+              textDecoration: "none",
+              fontSize: "110%",
+            }}
+            to="/"
+          >
             Home
           </Link>
-        </Typography>
-      </IconButton>
-    )
-
-  
+        </Button>
+      </Typography>
+    </IconButton>
+  );
 }
-
