@@ -12,6 +12,9 @@ import axios from 'axios'
 import mapStyles from './mapStyles'
 // import Messaging from "./Chat/Messaging";
 
+// imports for map search
+
+
 const api = process.env.REACT_APP_MAP_KEY
 
 //{ lat: 53.631611, lng: -113.323975 }, { lat:53.598550, lng:-113.489080 }
@@ -100,13 +103,12 @@ export default function WholeMap({showChat, setShowChat}) {
 //add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
- return (<div style={{ width: "100vh", height: "100vh", position:"relative",zIndex: '1' }}>
+ return (<div style={{ width: "80%", height: "100vh", position:"relative", zIndex: '1', margin:'200px'}}>
   <WrappedMap
     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
-    mapElement={<div style={{ height: `100%` } } />}
-    
+    mapElement={<div style={{ height: `100%`, border:'solid #795696', borderRadius: '7px', boxShadow: '3px 6px #A078BA' } } />}
   />
   
  </div>              

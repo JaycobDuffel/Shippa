@@ -90,9 +90,13 @@
     bottom: 100px;
     right: 10px; 
   }
-  
-  #map {
-    position: center;
-    margin-left: 400px;
-    padding-left: 400px;
+
+  .search {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 10;
   }

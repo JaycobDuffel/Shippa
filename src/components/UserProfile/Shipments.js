@@ -115,11 +115,11 @@ export default function Shipments() {
               <StyledTableCell align="center">
               <FormControl variant="filled" className={classes.formControl}>
                 <InputLabel htmlFor="filled-age-native-simple">Status</InputLabel>
-                <Select style={{width:'15vh', height:'45px'}} id="shipSelect" value={value}>
-                  <option aria-label="None" value='Open' />
-                  <option value={1} onClick={() => { setValue('Open')} }>Open</option>
-                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment); setValue('Assigned')}}>Assigned</option>
-                  <option value={3} onClick={() => { setValue('Delivered')} }>Delivered</option>
+                <Select style={{width:'15vh', height:'45px'}} id="shipSelect" defaultValue={'Default'} >
+                  <option aria-label="None" value='Default' disabled />
+                  <option value={1}>Open</option>
+                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment)}}>Assigned</option>
+                  <option value={3} >Delivered</option>
                 </Select>
               </FormControl>
               </StyledTableCell>
