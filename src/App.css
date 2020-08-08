@@ -93,10 +93,18 @@
 
   .search {
     position: absolute;
-    top: 1rem;
-    left: 50%;
+    top: 14rem;
+    left: 55%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 400px;
     z-index: 10;
+    opacity: 90%;
+  }
+
+  .search input {
+    border-radius: 5%;
+    border: none;
+    height: 30px;
+    width: 300px;
   }

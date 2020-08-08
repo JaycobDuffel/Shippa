@@ -20,6 +20,10 @@ import Shipments from './components/UserProfile/Shipments';
 export default function App() {
   const [checkLogin, setCheckLogin] = useState(true);
   const [showChat, setShowChat] = useState(false);
+  const [coordinates, setCoordinates] = useState({
+    lat: 53.544388, 
+    lng: -113.490929 
+});
 
   const handleOpen = (name) => {
     setShowChat(name);  
@@ -36,7 +40,7 @@ export default function App() {
         <ScrollToTop>
         <Nav checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
         <Switch>
-          <Route path="/" exact component={() => <WholeMap className="map" setShowChat={handleOpen} showChat={showChat}/>}  />
+          <Route path="/" exact component={() => <WholeMap className="map" setShowChat={handleOpen} showChat={showChat} coordinates={coordinates} setCoordinates={setCoordinates} />}  />
           <Route path="/faq" exact component={FAQPage} />
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />

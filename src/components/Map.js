@@ -10,6 +10,21 @@ import {
 } from "react-google-maps/";
 import axios from 'axios'
 import mapStyles from './mapStyles'
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
+
+// import {
+//   Combobox,
+//   ComboboxInput,
+//   ComboboxPopover,
+//   ComboboxList,
+//   ComboboxOption,
+//   ComboboxOptionText,
+// } from "@reach/combobox";
+// import "@reach/combobox/styles.css";
+
 // import Messaging from "./Chat/Messaging";
 
 // imports for map search
@@ -18,8 +33,53 @@ import mapStyles from './mapStyles'
 const api = process.env.REACT_APP_MAP_KEY
 
 //{ lat: 53.631611, lng: -113.323975 }, { lat:53.598550, lng:-113.489080 }
-export default function WholeMap({showChat, setShowChat}) {
+ 
+
+export default function WholeMap({showChat, setShowChat, coordinates, setCoordinates}) {
   // const [markers, setMarkers] = useState([])
+  
+  function Search() {
+    const [address, setAddress] = useState("");
+    
+  
+    const handleSelect = async value => {
+      const results = await geocodeByAddress(value);
+      const latLng = await getLatLng(results[0]);
+      setAddress(value);
+      setCoordinates(latLng);
+    };
+    console.log(coordinates)
+    return (
+      <div className='search'>
+        <PlacesAutocomplete
+          value={address}
+          onChange={setAddress}
+          onSelect={handleSelect}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+              <input {...getInputProps({ placeholder: "Type address" })} />
+              <div>
+                {loading ? <div>...loading</div> : null}
+  
+                {suggestions.map(suggestion => {
+                  const style = {
+                    backgroundColor: suggestion.active ? "#A078BA" : "#fff"
+                  };
+  
+                  return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+      </div>
+    );
+  }
 
   function Map() {
     const [markers, setMarkers] = useState([]);
@@ -68,9 +128,10 @@ export default function WholeMap({showChat, setShowChat}) {
   return (
     <GoogleMap
       defaultZoom={9}
-      defaultCenter={{ lat: 53.544388, lng: -113.490929 }}
+      defaultCenter={ coordinates }
       defaultOptions={{styles: mapStyles }}
     >
+    
       {markers.map(marker => 
       marker.status === true? <Marker 
         key={marker.id} 
@@ -96,22 +157,27 @@ export default function WholeMap({showChat, setShowChat}) {
         }}>Chat about this shipment</Button>
         
       </div>
+      
       </InfoWindow>) : null}
     </GoogleMap>
+   
   );
 }
 //add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
- return (<div style={{ width: "80%", height: "100vh", position:"relative", zIndex: '1', margin:'200px'}}>
+ return (<><div style={{ width: "80%", height: "100vh", position:"relative", zIndex: '1', margin:'200px'}}>
   <WrappedMap
     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
     mapElement={<div style={{ height: `100%`, border:'solid #795696', borderRadius: '7px', boxShadow: '3px 6px #A078BA' } } />}
   />
-  
- </div>              
+ </div>  
+   <div>
+   <Search />
+ </div>  
+ </>          
  )
 }
 
