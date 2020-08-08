@@ -6,7 +6,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -112,8 +111,13 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
     setOpen(false);
   };
 
+
+
   return (
+    
     <div className={classes.root}>
+      {authUser? (
+        <>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -121,7 +125,6 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
           [classes.appBarShift]: open,
         })}
       >
-        { authUser ? (
           <Toolbar>
             <IconButton
               color="inherit"
@@ -152,27 +155,6 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             {authUser ? <NewOrder /> : ""}
             {authUser ? <h1>Hello {authUser.name}</h1> : ""}
           </Toolbar>
-        ) : (
-          <Toolbar>
-            <a href="/">
-              <img
-                src="https://i.ibb.co/kHC7q4N/shippa.png"
-                alt="shippa"
-                border="0"
-              />{" "}
-            </a>
-            <Home />
-            {authUser ? (
-              <Signout setCheckLogin={setCheckLogin} />
-            ) : (
-              <Signup setCheckLogin={setCheckLogin} />
-            )}
-            {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
-            <CheckPrice />
-            {authUser ? <NewOrder /> : ""}
-            {authUser ? <h1>Hello {authUser.name}</h1> : ""}
-          </Toolbar>
-        )}
       </AppBar>
       <Drawer
         variant="permanent"
@@ -248,6 +230,37 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
           </ListItem>
         </List>
       </Drawer>
+      </> ): (
+        <>
+        <CssBaseline />
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
+          <Toolbar>
+            <a href="/">
+              <img
+                src="https://i.ibb.co/kHC7q4N/shippa.png"
+                alt="shippa"
+                border="0"
+              />{" "}
+            </a>
+            <Home />
+            {authUser ? (
+              <Signout setCheckLogin={setCheckLogin} />
+            ) : (
+              <Signup setCheckLogin={setCheckLogin} />
+            )}
+            {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
+            <CheckPrice />
+            {authUser ? <NewOrder /> : ""}
+            {authUser ? <h1>Hello {authUser.name}</h1> : ""}
+          </Toolbar>
+      </AppBar>
+        </>
+      )}
     </div>
   );
 }
