@@ -12,9 +12,10 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 2,
-    overflow: 'hidden',
-    padding: theme.spacing(0, 3),
+    // flexGrow: 2,
+    // overflow: 'hidden',
+    // padding: theme.spacing(0, 3),
+    
   },
   paper: {
     maxWidth: 400,
@@ -53,8 +54,6 @@ export default function Messaging(props) {
     setState({ message: "", name })
   }
 
-
-
   const renderChat = () => {
     return chat.map(({ name, message }, index) => (
       <div key={index}>
@@ -74,7 +73,7 @@ export default function Messaging(props) {
 
     return (
       <div className={classes.root} id='chatbox'>
-      <Box height="300px" overflow="auto" bottom="30px" right="30px">
+      
             
         <form onSubmit={onMessageSubmit}>
          <h1>Messenger</h1>
@@ -85,7 +84,6 @@ export default function Messaging(props) {
             value={state.name} 
             label="name" />
           </div>
-          {renderChat()}
           <div >
             <TextField 
             name="message" 
@@ -94,12 +92,13 @@ export default function Messaging(props) {
             id="outlined-multiline-static"
             variant="outlined"
             label="message"
-             />
+            />
           </div>
           <button>Send Message</button>
           <button onClick={(e) => {props.setShowChat()}} >Close</button>
+            {renderChat()}
         </form>
-      </Box>
+      
       </div>
     )
 
