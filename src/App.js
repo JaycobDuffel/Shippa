@@ -12,6 +12,7 @@ import ScrollToTop from './components/helpers/ScrollToTop'
 import Distance from './components/NewOrder/Distance';
 import Messaging from './components/Chat/Messaging.js';
 import Shipments from './components/UserProfile/Shipments';
+import { render } from '@testing-library/react';
 // import ChatWindow from './components/Chat/ChatWindow'
 // import Chat from './components/Chat/TestMessage.js';
 
@@ -32,6 +33,7 @@ export default function App() {
   const handleClose = () => {
     setShowChat(false);
   }
+
 
   return (
     <Fragment>
@@ -55,7 +57,7 @@ export default function App() {
       </Router>
       </AuthContextProvider>
     </Fragment>
-  );
+  )
 }
 
 

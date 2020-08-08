@@ -36,7 +36,6 @@ const api = process.env.REACT_APP_MAP_KEY
  
 
 export default function WholeMap({showChat, setShowChat, coordinates, setCoordinates}) {
-  // const [markers, setMarkers] = useState([])
   
   function Search() {
     const [address, setAddress] = useState("");
