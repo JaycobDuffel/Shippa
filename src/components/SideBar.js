@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    backgroundColor: '#fffcfd',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -133,7 +134,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <MenuIcon />
             
           </IconButton>
-          <a href="/"><img src="https://i.ibb.co/kHC7q4N/shippa.png" alt="shippa" border="0" /> </a>
+          <a href="/"><img src="https://i.ibb.co/R033KYd/LOGO.png" alt="LOGO" border="0" height="90px" /></a>
           <Home />
             {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
             {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}

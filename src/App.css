@@ -31,14 +31,13 @@
   color: #61dafb;
 }
 
-
-
 .chatbox-container {
   position: absolute;
   bottom: 0;
-  height: 400px;
+  height: 500px;
   right: 5%;
   width: 300px;
+  border: 1px;
   }
 
   .card {
@@ -67,7 +66,7 @@
   
   .render-chat {
     max-width: 350px;
-    border-radius: 5px;
+    border-radius: 1px;
     padding: 20px;
     box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75);
   }
@@ -85,6 +84,8 @@
     background-color: white;
     z-index: 2;
     border: solid;
+    border-width: 1px;
+    border-radius: 5px;
     width: 300px;
     position: fixed;
     bottom: 100px;

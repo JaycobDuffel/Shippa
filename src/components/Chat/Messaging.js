@@ -13,13 +13,14 @@ import { borders } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 2,
+    backgroundColor: 'red',
+    // flexGrow: 1,
     overflow: 'hidden',
-    padding: theme.spacing(0, 3),
+    // padding: theme.spacing(0, 3),
     
   },
   paper: {
-    maxWidth: 400,
+    maxWidth: 'auto',
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
   },
@@ -58,7 +59,7 @@ export default function Messaging(props) {
   const renderChat = () => {
     return chat.map(({ name, message }, index) => (
       <div key={index}>
-        <Paper className={classes.paper}>
+        <Paper variant='outlined' >
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Avatar>W</Avatar>
@@ -72,9 +73,10 @@ export default function Messaging(props) {
     ))
   }
 
+  // className={classes.root}
   return (
-    <div className={classes.root} id='chatbox'>
-    <Box height="300px" overflow="auto" bottom="30px" right="30px">
+    <div  id='chatbox' >
+    {/* <div className={classes.root} > */}
       <form onSubmit={onMessageSubmit}>
         <h1>Messenger</h1>
         <div className="name-field">
@@ -84,7 +86,9 @@ export default function Messaging(props) {
           value={state.name} 
           label="name" />
         </div>
+        <div>
           {renderChat()}
+        </div>
         <div >
           <TextField 
           name="message" 
@@ -98,7 +102,8 @@ export default function Messaging(props) {
           <button>Send Message</button>
           <button onClick={(e) => {props.setShowChat()}} >Close</button>
         </form>
-      </Box>
+    {/* </div> */}
+
     </div>
   )
 
