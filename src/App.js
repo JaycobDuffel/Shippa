@@ -14,7 +14,7 @@ import Messaging from './components/Chat/Messaging.js';
 import Shipments from './components/UserProfile/Shipments';
 // import ChatWindow from './components/Chat/ChatWindow'
 // import Chat from './components/Chat/TestMessage.js';
-
+import Invoices from './components/UserProfile/Invoices'
 
 
 export default function App() {
@@ -45,6 +45,7 @@ export default function App() {
           <Route path="/privacy" exact component={TermsOfServicePage} />
           <Route path="/contact" exact component={ContactUsPage} />
           <Route path="/shipments" exact component={Shipments} />
+          <Route path="/invoices" exact component={Invoices} />
         </Switch>
         {/* <ChatWindow /> */}
         {/* <Distance /> */}
