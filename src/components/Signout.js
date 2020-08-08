@@ -6,6 +6,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import { AuthContext } from '../contexts/authContext';
+import { Link } from 'react-router-dom';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -53,7 +55,9 @@ export default function Signout({ setCheckLogin }) {
             Cancel
           </Button>
           <Button onClick={handleSubmit} color="secondary">
+            <Link to='/'>
             Confirm
+            </Link>
           </Button>
         </DialogActions>
       </Dialog>
