@@ -9,12 +9,13 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { borders } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 2,
-    // overflow: 'hidden',
-    // padding: theme.spacing(0, 3),
+    flexGrow: 2,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
     
   },
   paper: {
@@ -71,36 +72,35 @@ export default function Messaging(props) {
     ))
   }
 
-    return (
-      <div className={classes.root} id='chatbox'>
-      
-            
-        <form onSubmit={onMessageSubmit}>
-         <h1>Messenger</h1>
-          <div className="name-field">
-            <TextField 
-            name="name" 
-            onChange={e => onTextChange(e)} 
-            value={state.name} 
-            label="name" />
-          </div>
-          <div >
-            <TextField 
-            name="message" 
-            onChange={e => onTextChange(e)} 
-            value={state.message}
-            id="outlined-multiline-static"
-            variant="outlined"
-            label="message"
-            />
-          </div>
+  return (
+    <div className={classes.root} id='chatbox'>
+    <Box height="300px" overflow="auto" bottom="30px" right="30px">
+      <form onSubmit={onMessageSubmit}>
+        <h1>Messenger</h1>
+        <div className="name-field">
+          <TextField 
+          name="name" 
+          onChange={e => onTextChange(e)} 
+          value={state.name} 
+          label="name" />
+        </div>
+          {renderChat()}
+        <div >
+          <TextField 
+          name="message" 
+          onChange={e => onTextChange(e)} 
+          value={state.message}
+          id="outlined-multiline-static"
+          variant="outlined"
+          label="message"
+          />
+        </div>
           <button>Send Message</button>
           <button onClick={(e) => {props.setShowChat()}} >Close</button>
-            {renderChat()}
         </form>
-      
-      </div>
-    )
+      </Box>
+    </div>
+  )
 
 }
 
