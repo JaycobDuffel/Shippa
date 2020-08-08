@@ -172,7 +172,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <ListItem button >
               <ListItemIcon><ReceiptIcon /></ListItemIcon>
               <ListItemText />
-              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
+              <Link style={{color: 'black', textDecoration: 'none'}} to='/invoices'>
                 Invoices
               </Link>
             </ListItem>
