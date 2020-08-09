@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#fffcfd",
-    // background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
-    // animation: 'gradient 15s ease infinite',
+    background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
+    animation: 'gradient 15s ease infinite',
     color: "black",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
