@@ -113,15 +113,19 @@
 
   .values {
     display: flex;
-    flex-direction: column;
-    width: 150px;
-    margin: 100px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    margin-bottom: -300px;
   }
-
+  .truck {
+    margin-top: -200px;
+    
+  }
   .each-value {
     display: flex;
     justify-content: space-between;
     height: 200px;
     margin: 10px;
-    width: 100px;
+    
   }
