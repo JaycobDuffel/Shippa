@@ -20,7 +20,7 @@ function Copyright() {
     <Typography
       variant="body2"
       color="textSecondary"
-      style={{ marginLeft: "100px" }}
+      style={{ marginLeft: "400px" }}
     >
       {"Copyright © "}
       <Link color="inherit">Shippa</Link> {new Date().getFullYear()}
@@ -62,13 +62,17 @@ export default function Footer() {
       <footer className={classes.footer}>
         <Container maxWidth="md" className="d-flex flex-column">
           <BottomNavigation showLabels className={classes.bgcolor}>
-            <Home onclick={() => window.scrollTo(0, 0)} />
-            <FAQ />
-            <TermsOfService />
-            <ContactUs />
-            {authUser ? "" : <Signup />}
+            <div style={{display: 'flex', alignItems:'center'}}>
+              <Home onclick={() => window.scrollTo(0, 0)} />
+              <FAQ />
+              <TermsOfService />
+              <ContactUs />
+              {authUser ? "" : <Signup />}
+            </div>
           </BottomNavigation>
+          <div>
           <Copyright />
+          </div>
         </Container>
       </footer>
     </div>

@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    
   },
   avatar: {
     margin: theme.spacing(1),
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+   
   },
 }));
 
@@ -46,12 +48,13 @@ export default function CheckPrice() {
           <Button
             variant="outlined"
             style={{
-              border: "#6B4C86 2px solid",
+              border: "#3c3b3d 2px solid",
               width: "105%",
               height: "105%",
+              
             }}
           >
-            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/">
+            <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/">
               Get a Quote
             </Link>
           </Button>

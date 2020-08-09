@@ -33,11 +33,11 @@ export default function Home() {
       <Typography component="h1" variant="h5">
         <Button
           variant="outlined"
-          style={{ border: "#6B4C86 2px solid", width: "105%", height: "105%" }}
+          style={{ border: "#3c3b3d 2px solid", width: "105%", height: "105%" }}
         >
           <Link
             style={{
-              color: "#6B4C86",
+              color: "#3c3b3d",
               textDecoration: "none",
               fontSize: "110%",
             }}

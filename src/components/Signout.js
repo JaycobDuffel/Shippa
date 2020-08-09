@@ -38,12 +38,12 @@ export default function Signout({ setCheckLogin }) {
           <Button
             variant="outlined"
             style={{
-              border: "#6B4C86 2px solid",
+              border: "#3c3b3d 2px solid",
               width: "105%",
               height: "105%",
             }}
           >
-            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/">
+            <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/">
               Sign Out
             </Link>
           </Button>

@@ -11,7 +11,12 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Avatar,
+} from "@material-ui/core";
 import Signin from "./Signin.js";
 import Signup from "./Signup.js";
 import Home from "./Home";
@@ -24,7 +29,7 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SettingsIcon from "@material-ui/icons/Settings";
-
+// import Avatar from '@material-ui/core/Avatar'
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -33,9 +38,9 @@ const useStyles = makeStyles((theme) => ({
     mt: 8,
   },
   appBar: {
-    backgroundColor: "#fffcfd",
-    background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
-    animation: 'gradient 15s ease infinite',
+    backgroundColor: "#fafafa",
+    // background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
+    animation: "gradient 15s ease infinite",
     color: "black",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -124,36 +129,71 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             })}
           >
             <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                className={clsx(classes.menuButton, {
-                  [classes.hide]: open,
-                })}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
               >
-                <MenuIcon />
-              </IconButton>
-              <a href="/">
-                <img
-                  src="https://i.ibb.co/R033KYd/LOGO.png"
-                  alt="shippa"
-                  border="0"
-                  height="70px"
-                  style={{marginTop: '10px'}}
-                />{" "}
-              </a>
-              <Home />
-              {authUser ? (
-                <Signout setCheckLogin={setCheckLogin} />
-              ) : (
-                <Signup setCheckLogin={setCheckLogin} />
-              )}
-              {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
-              <CheckPrice />
-              {authUser ? <NewOrder /> : ""}
-              {authUser ? <h1 style={{color: "#6B4C86"}}>Hello {authUser.name}</h1> : ""}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    className={clsx(classes.menuButton, {
+                      [classes.hide]: open,
+                    })}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <a href="/">
+                    <img
+                      src="https://i.ibb.co/R033KYd/LOGO.png"
+                      alt="shippa"
+                      border="0"
+                      height="60px"
+                      style={{ marginTop: "10px" }}
+                    />{" "}
+                  </a>
+                  <Home />
+                  {authUser ? (
+                    <Signout setCheckLogin={setCheckLogin} />
+                  ) : (
+                    <Signup setCheckLogin={setCheckLogin} />
+                  )}
+                  {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
+                  <CheckPrice />
+                  {authUser ? <NewOrder /> : ""}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    position: 'absolute',
+                    right:'30px'
+                  }}
+                >
+                  <h3 style={{ color: "#3C3B3D", marginRight: '15px' }}>
+                    {authUser.name}
+                  </h3>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://i.ibb.co/Fq8hsCp/lexus.png"
+                    className={classes.small}
+                  />
+                </div>
+              </div>
             </Toolbar>
           </AppBar>
           <Drawer
@@ -241,14 +281,14 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               [classes.appBarShift]: open,
             })}
           >
-            <Toolbar style={{marginLeft: "70px"}}>
-            <a href="/">
+            <Toolbar style={{ marginLeft: "70px" }}>
+              <a href="/">
                 <img
                   src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
-                  height="70px"
-                  style={{marginTop: '10px'}}
+                  height="50px"
+                  style={{ marginTop: "10px" }}
                 />{" "}
               </a>
               <Home />
