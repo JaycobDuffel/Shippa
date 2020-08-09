@@ -6,15 +6,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import Signin from "./Signin.js";
 import Signup from "./Signup.js";
 import Home from "./Home";
@@ -37,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#fffcfd",
+    // background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
+    // animation: 'gradient 15s ease infinite',
     color: "black",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -115,89 +114,153 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
+      {authUser ? (
+        <>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
             })}
           >
-            <MenuIcon />
-            
-          </IconButton>
-          <a href="/"><img src="https://i.ibb.co/R033KYd/LOGO.png" alt="LOGO" border="0" height="50px" mt={2}/></a>
-          <Home />
-            {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
-            {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}
-            <CheckPrice />
-            {authUser? <NewOrder /> : '' }
-            {authUser? <h1>Hello {authUser.name}</h1> : ""}
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-            <ListItem button >
-              <ListItemIcon><LocalShippingIcon /></ListItemIcon>
-              <ListItemText />
-              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
-                Shipments
-              </Link>
-            </ListItem>
-            <ListItem button >
-              <ListItemIcon><ReceiptIcon /></ListItemIcon>
-              <ListItemText />
-              <Link style={{color: 'black', textDecoration: 'none'}} to='/invoices'>
-                Invoices
-              </Link>
-            </ListItem>
-            <ListItem button >
-              <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-              <ListItemText />
-              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
-                Profile
-              </Link>
-            </ListItem>
-            <ListItem button >
-              <ListItemIcon><SettingsIcon /></ListItemIcon>
-              <ListItemText />
-              <Link style={{color: 'black', textDecoration: 'none'}} to='/shipments'>
-                Settings
-              </Link>
-            </ListItem>
-        </List>
-      </Drawer>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, {
+                  [classes.hide]: open,
+                })}
+              >
+                <MenuIcon />
+              </IconButton>
+              <a href="/">
+                <img
+                  src="https://i.ibb.co/kHC7q4N/shippa.png"
+                  alt="shippa"
+                  border="0"
+                />{" "}
+              </a>
+              <Home />
+              {authUser ? (
+                <Signout setCheckLogin={setCheckLogin} />
+              ) : (
+                <Signup setCheckLogin={setCheckLogin} />
+              )}
+              {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
+              <CheckPrice />
+              {authUser ? <NewOrder /> : ""}
+              {authUser ? <h1 style={{color: "#6B4C86"}}>Hello {authUser.name}</h1> : ""}
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            className={clsx(classes.drawer, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            })}
+            classes={{
+              paper: clsx({
+                [classes.drawerOpen]: open,
+                [classes.drawerClose]: !open,
+              }),
+            }}
+          >
+            <div className={classes.toolbar}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              <ListItem button>
+                <ListItemIcon>
+                  <LocalShippingIcon />
+                </ListItemIcon>
+                <ListItemText />
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  to="/shipments"
+                  onClick={handleDrawerClose}
+                >
+                  Shipments
+                </Link>
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <ReceiptIcon />
+                </ListItemIcon>
+                <ListItemText />
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  to="/shipments"
+                >
+                  Invoices
+                </Link>
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <AccountCircleIcon />
+                </ListItemIcon>
+                <ListItemText />
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  to="/shipments"
+                >
+                  Profile
+                </Link>
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText />
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  to="/shipments"
+                >
+                  Settings
+                </Link>
+              </ListItem>
+            </List>
+          </Drawer>
+        </>
+      ) : (
+        <>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
+          >
+            <Toolbar>
+              <a href="/">
+                <img
+                  src="https://i.ibb.co/kHC7q4N/shippa.png"
+                  alt="shippa"
+                  border="0"
+                />{" "}
+              </a>
+              <Home />
+              {authUser ? (
+                <Signout setCheckLogin={setCheckLogin} />
+              ) : (
+                <Signup setCheckLogin={setCheckLogin} />
+              )}
+              {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
+              <CheckPrice />
+              {authUser ? <NewOrder /> : ""}
+              {authUser ? <h1>Hello {authUser.name}</h1> : ""}
+            </Toolbar>
+          </AppBar>
+        </>
+      )}
     </div>
   );
 }
