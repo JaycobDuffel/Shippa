@@ -137,7 +137,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               </IconButton>
               <a href="/">
                 <img
-                  src="https://i.ibb.co/kHC7q4N/shippa.png"
+                  src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
                 />{" "}
@@ -198,7 +198,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
                 <ListItemText />
                 <Link
                   style={{ color: "black", textDecoration: "none" }}
-                  to="/shipments"
+                  to="/invoices"
                 >
                   Invoices
                 </Link>
