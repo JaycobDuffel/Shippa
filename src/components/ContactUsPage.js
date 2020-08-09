@@ -4,7 +4,7 @@ import {  MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBInput } from "mdbrea
 const ContactPage = () => {
   return (
     <MDBContainer>
-      <h2 className="h1-responsive font-weight-bold text-center my-5">
+      <h2 className="h1-responsive font-weight-bold text-center" style={{ marginTop: "100px" }}>
         Contact us
       </h2>
       <p className="text-center w-responsive mx-auto pb-5" style={{fontSize: "155%"}}>
@@ -40,7 +40,7 @@ const ContactPage = () => {
             </MDBRow>
             <MDBRow>
               <MDBCol md="12">
-                <div className="md-form mb-0">
+                <div className="form-group">
                   <MDBInput
                     type="textarea"
                     id="contact-message"
@@ -51,7 +51,7 @@ const ContactPage = () => {
             </MDBRow>
           </form>
           <div className="text-center text-md-left">
-            <MDBBtn color="primary" size="md">
+            <MDBBtn color="secondary" size="lg">
               Send
             </MDBBtn>
           </div>
