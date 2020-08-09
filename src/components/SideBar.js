@@ -33,6 +33,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    mt: 8,
   },
   appBar: {
     backgroundColor: "#fffcfd",
@@ -134,7 +135,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <MenuIcon />
             
           </IconButton>
-          <a href="/"><img src="https://i.ibb.co/R033KYd/LOGO.png" alt="LOGO" border="0" height="90px" /></a>
+          <a href="/"><img src="https://i.ibb.co/R033KYd/LOGO.png" alt="LOGO" border="0" height="50px" mt={2}/></a>
           <Home />
             {authUser? <Signout setCheckLogin={setCheckLogin} /> : <Signup setCheckLogin={setCheckLogin} />}
             {authUser? '' : <Signin setCheckLogin={setCheckLogin} />}
