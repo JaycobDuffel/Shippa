@@ -140,6 +140,8 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
                   src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
+                  height="70px"
+                  style={{marginTop: '10px'}}
                 />{" "}
               </a>
               <Home />
@@ -239,12 +241,14 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               [classes.appBarShift]: open,
             })}
           >
-            <Toolbar>
-              <a href="/">
+            <Toolbar style={{marginLeft: "70px"}}>
+            <a href="/">
                 <img
-                  src="https://i.ibb.co/kHC7q4N/shippa.png"
+                  src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
+                  height="70px"
+                  style={{marginTop: '10px'}}
                 />{" "}
               </a>
               <Home />

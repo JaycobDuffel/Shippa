@@ -40,8 +40,8 @@ export default function TermsOfService() {
               height: "105%",
             }}
           >
-            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/">
-              New Shipment
+            <Link style={{ color: "#6B4C86", textDecoration: "none", fontSize: '110%' }} to="/privacy">
+             Terms of Service
             </Link>
           </Button>
         </Typography>

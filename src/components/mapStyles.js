@@ -1,99 +1,71 @@
 export default [
     {
-        "featureType": "road",
+        "featureType": "landscape.natural",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "hue": "#5e00ff"
+                "visibility": "on"
             },
             {
-                "saturation": -79
+                "color": "#e0efef"
             }
         ]
     },
     {
         "featureType": "poi",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "saturation": -78
+                "visibility": "on"
             },
             {
-                "hue": "#6600ff"
+                "hue": "#1900ff"
             },
             {
-                "lightness": -47
+                "color": "#c0e8e8"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 100
             },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
             {
                 "visibility": "off"
             }
         ]
     },
     {
-        "featureType": "road.local",
+        "featureType": "transit.line",
+        "elementType": "geometry",
         "stylers": [
             {
-                "lightness": 22
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "stylers": [
-            {
-                "hue": "#6600ff"
+                "visibility": "on"
             },
             {
-                "saturation": -11
+                "lightness": 700
             }
         ]
     },
-    {},
-    {},
     {
         "featureType": "water",
+        "elementType": "all",
         "stylers": [
             {
-                "saturation": -65
-            },
-            {
-                "hue": "#1900ff"
-            },
-            {
-                "lightness": 8
+                "color": "#7dcdcd"
             }
         ]
-    },
-    {
-        "featureType": "road.local",
-        "stylers": [
-            {
-                "weight": 1.3
-            },
-            {
-                "lightness": 30
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            },
-            {
-                "hue": "#5e00ff"
-            },
-            {
-                "saturation": -16
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "stylers": [
-            {
-                "saturation": -72
-            }
-        ]
-    },
-    {}
+    }
 ]
