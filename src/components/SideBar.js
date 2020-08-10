@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#fafafa",
     // background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
-    animation: "gradient 15s ease infinite",
+    // animation: "gradient 15s ease infinite",
     color: "black",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -161,7 +161,7 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
                       alt="shippa"
                       border="0"
                       height="60px"
-                      style={{ marginTop: "10px" }}
+                      style={{ marginTop: "10px", marginRight: '30px' }}
                     />{" "}
                   </a>
                   <Home />
