@@ -222,7 +222,9 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <List>
               <ListItem button>
                 <ListItemIcon>
+                  <Link style={{ color: "#707070", textDecoration: "none" }} to='/shipments' >
                   <LocalShippingIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
@@ -235,7 +237,12 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
+                  <Link
+                  to="/invoices"
+                  style={{ color: "#707070", textDecoration: "none" }}
+                  >
                   <ReceiptIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
@@ -247,7 +254,12 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
+                  <Link
+                  to="/profile"
+                  style={{ color: "#707070", textDecoration: "none" }}
+                  >
                   <AccountCircleIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
@@ -269,14 +281,14 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               [classes.appBarShift]: open,
             })}
           >
-            <Toolbar style={{ marginLeft: "70px" }}>
+            <Toolbar style={{ marginLeft: "25px" }}>
               <a href="/">
                 <img
                   src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
                   height="50px"
-                  style={{ marginTop: "10px" }}
+                  style={{ marginTop: "10px", marginRight: '30px' }}
                 />{" "}
               </a>
               <Home />

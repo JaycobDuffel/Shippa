@@ -82,10 +82,10 @@ export default function Invoices() {
                 {shipment.id}
               </StyledTableCell>
               <StyledTableCell align="center">{shipment.distance/1000}</StyledTableCell>
-              <StyledTableCell align="center">{shipment.price}</StyledTableCell>
-              <StyledTableCell align="center">{(Number(shipment.price) * 0.05).toFixed(2)}</StyledTableCell>
-              <StyledTableCell align="center">{((Number(shipment.price) + (Number(shipment.price) * 0.05)) * 0.05).toFixed(2)}</StyledTableCell>
-              <StyledTableCell align="center">{(((Number(shipment.price) + (Number(shipment.price) * 0.05)) * 0.05) + (Number(shipment.price) * 0.05) + Number(shipment.price)).toFixed(2)}</StyledTableCell>
+              <StyledTableCell align="center">${shipment.price}</StyledTableCell>
+              <StyledTableCell align="center">${(Number(shipment.price) * 0.05).toFixed(2)}</StyledTableCell>
+              <StyledTableCell align="center">${((Number(shipment.price) + (Number(shipment.price) * 0.05)) * 0.05).toFixed(2)}</StyledTableCell>
+              <StyledTableCell align="center">${(((Number(shipment.price) + (Number(shipment.price) * 0.05)) * 0.05) + (Number(shipment.price) * 0.05) + Number(shipment.price)).toFixed(2)}</StyledTableCell>
               <StyledTableCell align="center">
               {selectStatus}
               </StyledTableCell>

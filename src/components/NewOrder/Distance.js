@@ -9,7 +9,7 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
   
   // https://cors-anywhere.herokuapp.com/
   const distanceMatrix = () => {
-    axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?',{
+    axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?',{
       params: {
         units: 'metric',
         origins: `${pickupAddress} ${pickupCity}`,
@@ -26,7 +26,7 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
     })
     .catch((err) => {
       console.log('err >>', err)
-      alert("Please enter an address in the correct format. We can only help with the right information.")
+      alert("Please enter an address in the correct format.")
       // alert("We're sorry, there seems to have been an error: ", err)
     })
   }
