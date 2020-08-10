@@ -129,3 +129,24 @@
     margin: 10px;
     
   }
+
+  .faq-whole {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+    margin-top: 100px;
+    width: 70%;
+  }
+  .faq-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0px 20px 0px;
+    border-top: #3c3b3d 2px solid;
+  }
