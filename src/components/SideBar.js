@@ -252,21 +252,9 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
                 <ListItemText />
                 <Link
                   style={{ color: "black", textDecoration: "none" }}
-                  to="/shipments"
+                  to="/profile"
                 >
                   Profile
-                </Link>
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <SettingsIcon />
-                </ListItemIcon>
-                <ListItemText />
-                <Link
-                  style={{ color: "black", textDecoration: "none" }}
-                  to="/shipments"
-                >
-                  Settings
                 </Link>
               </ListItem>
             </List>

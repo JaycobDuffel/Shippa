@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 // const message = `Truncation should be conditionally applicable on this long line of text
@@ -99,8 +104,8 @@ export default function Messaging(props) {
           label="message"
           />
         </div>
-          <button>Send Message</button>
-          <button onClick={(e) => {props.setShowChat()}} >Close</button>
+          <button className={classes.button}>Send Message</button>
+          <button className={classes.button} onClick={(e) => {props.setShowChat()}} >Close</button>
         </form>
     {/* </div> */}
 

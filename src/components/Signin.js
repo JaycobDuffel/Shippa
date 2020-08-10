@@ -48,7 +48,15 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    '&:hover': {
+      background: '#a476af'
+    }
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 export default function Signin() {
@@ -74,9 +82,11 @@ export default function Signin() {
 
   return (
     <div>
-      <IconButton variant="contained" onClick={handleClickOpen}>
+      <IconButton variant="contained" >
         <Typography component="h1" variant="h5">
           <Button
+          className={classes.button}
+            onClick={handleClickOpen}
             variant="outlined"
             style={{
               border: "#3c3b3d 2px solid",
@@ -138,7 +148,7 @@ export default function Signin() {
               <Button
                 type="submit"
                 fullWidth
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 className={classes.submit}
               >

@@ -63,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
+    '&:hover': {
+      background: '#a476af'
+    }
   },
 }));
 
@@ -193,13 +196,15 @@ export default function Checkout() {
                   )}
                   { 
                     activeStep === steps.length - 1 ? <Button
-                    variant="contained"
+                    // variant="contained"
+                    variant="outlined"
                     color="primary"
                     onClick={() => {handleNext(); onSubmitForm(); setMarkers((prev) => [...prev, {lat:lat, lng:lon}])}}
                     className={classes.button}
                     // onSubmit={onSubmitForm}
                   >Place order</Button> : <Button
-                    variant="contained"
+                    // variant="contained"
+                    variant="outlined"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}

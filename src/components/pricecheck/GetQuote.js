@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
+    '&:hover': {
+      background: '#a476af'
+    }
   },
 }));
 
@@ -174,7 +177,7 @@ export default function GetQuote() {
                 )}
                 {activeStep === steps.length - 1 ? (
                   <Button
-                  variant="contained"
+                  variant="outlined"
                   color="primary"
                   onClick={() => {console.log('email!')
                   }}
@@ -186,7 +189,7 @@ export default function GetQuote() {
                   
                 activeStep === steps.length - 2 ? (
                   <Button
-                    variant="contained"
+                    variant="outlined"
                     color="primary"
                     onClick={() => {
                       handleNext();
@@ -197,7 +200,7 @@ export default function GetQuote() {
                   </Button>
                 ) : (
                   <Button
-                    variant="contained"
+                    variant="outlined"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}

@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 export default function NewOrder() {
@@ -46,6 +51,7 @@ export default function NewOrder() {
       <IconButton variant="contained" onClick={handleClickOpen}>
         <Typography component="h1" variant="h5">
           <Button
+            className={classes.button}
             variant="outlined"
             style={{
               border: "#3c3b3d 2px solid",

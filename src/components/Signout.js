@@ -8,14 +8,23 @@ import Slide from "@material-ui/core/Slide";
 import { AuthContext } from "../contexts/authContext";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+const useStyles = makeStyles((theme) => ({
+  button: {
+    '&:hover': {
+      background: '#ff7961'
+    }
+  }
+}));
 
 export default function Signout({ setCheckLogin }) {
   const [open, setOpen] = useState(false);
   const { logout } = useContext(AuthContext);
+  const classes = useStyles()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,10 +42,12 @@ export default function Signout({ setCheckLogin }) {
 
   return (
     <div>
-      <IconButton variant="contained" onClick={handleClickOpen}>
+      {/* <IconButton variant="contained" > */}
         <Typography component="h1" variant="h5">
           <Button
+            onClick={handleClickOpen}
             variant="outlined"
+            className={classes.button}
             style={{
               border: "#3c3b3d 2px solid",
               width: "105%",
@@ -48,7 +59,7 @@ export default function Signout({ setCheckLogin }) {
             </Link>
           </Button>
         </Typography>
-      </IconButton>
+      {/* </IconButton> */}
       <Dialog
         open={open}
         TransitionComponent={Transition}

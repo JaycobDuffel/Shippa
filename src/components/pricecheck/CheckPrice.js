@@ -25,8 +25,15 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-   
+    '&:hover': {
+      background: '#a476af'
+    }
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 export default function CheckPrice() {
@@ -46,6 +53,7 @@ export default function CheckPrice() {
       <IconButton variant="contained" onClick={handleClickOpen}>
         <Typography component="h1" variant="h5">
           <Button
+            className={classes.button}
             variant="outlined"
             style={{
               border: "#3c3b3d 2px solid",
