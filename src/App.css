@@ -95,13 +95,15 @@
 
   .search {
     position: absolute;
-    top: 14rem;
-    left: 55%;
+    top: 57rem;
+    left: 52%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 400px;
+    max-width: 307px;
     z-index: 10;
     opacity: 90%;
+    border: solid;
+    border-radius: 5px;
   }
 
   .search input {
@@ -128,4 +130,25 @@
     height: 200px;
     margin: 10px;
     
+  }
+
+  .faq-whole {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+    margin-top: 100px;
+    width: 70%;
+  }
+  .faq-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0px 20px 0px;
+    border-top: #3c3b3d 2px solid;
   }

@@ -4,8 +4,8 @@ import {
 } from "mdbreact";
 export default function TermsOfServicePage() {
   return (
-    <MDBContainer>
-      <h2 className="h1-responsive font-weight-bold my-5">Privacy Policy</h2>
+    <MDBContainer style={{ marginTop: "100px" }}>
+      <h2 className="h1-responsive font-weight-bold my-5" >Privacy Policy</h2>
       <p
         className="text-center w-responsive mx-auto pb-5"
         style={{ fontSize: "155%" }}

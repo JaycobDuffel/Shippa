@@ -33,15 +33,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "75vh",
+    minHeight: "20vh",
   },
   main: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
   footer: {
     padding: theme.spacing(3, 2),
-    marginTop: "auto",
+    marginTop: "10px",
   },
   bgcolor: {
     backgroundColor: "inherit",
