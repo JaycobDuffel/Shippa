@@ -81,48 +81,50 @@ export default function WholeMap({showChat, setShowChat, coordinates, setCoordin
   }
 
   function Map() {
-    const [markers, setMarkers] = useState([]);
-    const [selected, setSelected] = useState(null);
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   const handleClick = (e) => {
-    // e.preventDefault;
     setShowChat(true);
   }
 
   const shipments =  async () => {
-    return axios.get('http://localhost:5000/shipments')
-       .then( (res) => {
-         const coords = res.data.map((shipment) => {
-           return {
-             status: shipment.status,
-             id: shipment.id,
-             lat: Number(shipment.latitude),
-             lng: Number(shipment.longitude)
-           }
-         })
-         setMarkers(coords)
-        })
-        .catch((err) => {
-         console.log('err >>', err)
-       })
+    return axios('http://localhost:5000/shipments', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then( (res) => {
+      const coords = res.data.map((shipment) => {
+        return {
+          status: shipment.status,
+          id: shipment.id,
+          lat: Number(shipment.latitude),
+          lng: Number(shipment.longitude)
+        }
+      })
+      setMarkers(coords)
+    })
+    .catch((err) => {
+      console.log('err >>', err)
+    })
    }
 
    const shipmentToShow =  async (id) => {
     return axios.get(`http://localhost:5000/shipments/${id}`)
-       .then( (res) => {
-         const singleShipment = res.data[0];
-        //  console.log("singleShipment is here: ",singleShipment)
-          setSelected(singleShipment)
-        //  return singleShipment;
-         })
-        .catch((err) => {
-         console.log('err >>', err)
-       })
+      .then( (res) => {
+        const singleShipment = res.data[0];
+        setSelected(singleShipment)
+        })
+      .catch((err) => {
+        console.log('err >>', err)
+      })
    }
    
    useEffect(() => { 
      shipments()
-   }, []);
+   }, [markers]);
  
   return (
     <GoogleMap
@@ -138,14 +140,13 @@ export default function WholeMap({showChat, setShowChat, coordinates, setCoordin
         onClick={() => {
           setSelected(marker); shipmentToShow(marker.id)
         }}
-        /> : ""
-          
+      /> : ""
     )}
     
     {selected ? (
       <InfoWindow 
-      position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
-      onCloseClick={() => setSelected(null)}
+        position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
+        onCloseClick={() => setSelected(null)}
       > 
        <div className="infoWindow">
         <h3><p><strong>{selected.name}</strong></p></h3>
@@ -154,29 +155,27 @@ export default function WholeMap({showChat, setShowChat, coordinates, setCoordin
         <Button variant="contained" onClick={() => {
           handleClick();
         }}>Chat about this shipment</Button>
-        
       </div>
-      
       </InfoWindow>) : null}
     </GoogleMap>
-   
   );
 }
 //add distance API state 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
- return (<><div style={{ width: "80%", height: "100vh", position:"relative", zIndex: '1', margin:'200px 200px 0px 200px'}}>
-  <WrappedMap
-    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
-    loadingElement={<div style={{ height: `100%` }} />}
-    containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
-    mapElement={<div style={{ height: `100%`, border:'solid #3c3b3d', borderRadius: '7px', boxShadow: '3px 5px #9c97a1' } } />}
-  />
- </div>  
-   <div>
-   <Search />
- </div>  
- </>          
+ return (
+  <>
+    <div style={{ width: "80%", height: "100vh", position:"relative", zIndex: '1', margin:'200px 200px 0px 200px'}}>
+      <WrappedMap
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api}`}
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `600px`, margin: "65px"}} />}
+        mapElement={<div style={{ height: `100%`, border:'solid #3c3b3d', borderRadius: '7px', boxShadow: '3px 5px #9c97a1' } } />}
+      />
+    </div>  
+    <div>
+      <Search />
+    </div>  
+  </>          
  )
 }
-
