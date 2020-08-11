@@ -15,7 +15,7 @@ export default function CheckPriceForm ({ pickupNumber, setPickUpNumber, pickupF
       <div>
         <form>
       <Typography variant="h6" gutterBottom>
-        Pick Up Point
+        Drop Off Point
       </Typography>
         <Grid item xs={12}>
           <TextField
