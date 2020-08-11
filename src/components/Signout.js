@@ -8,14 +8,40 @@ import Slide from "@material-ui/core/Slide";
 import { AuthContext } from "../contexts/authContext";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
+}));
 
 export default function Signout({ setCheckLogin }) {
   const [open, setOpen] = useState(false);
   const { logout } = useContext(AuthContext);
+  const classes = useStyles()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,22 +59,31 @@ export default function Signout({ setCheckLogin }) {
 
   return (
     <div>
-      <IconButton variant="contained" onClick={handleClickOpen}>
-        <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5">
+        <div className="home-button">
           <Button
+            onClick={handleClickOpen}
             variant="outlined"
+            className={classes.button}
             style={{
               border: "#3c3b3d 2px solid",
               width: "105%",
               height: "105%",
             }}
           >
-            <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/">
+            <Link style={{ 
+              color: "#3c3b3d", 
+              textDecoration: "none", 
+              fontSize: '110%' 
+              }} 
+              to="/"
+              >
               Sign Out
             </Link>
           </Button>
-        </Typography>
-      </IconButton>
+        </div>
+      </Typography>
+      
       <Dialog
         open={open}
         TransitionComponent={Transition}

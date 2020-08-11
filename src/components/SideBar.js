@@ -29,7 +29,6 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SettingsIcon from "@material-ui/icons/Settings";
-// import Avatar from '@material-ui/core/Avatar'
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -39,8 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "#fafafa",
-    // background: 'linear-gradient(-45deg, #ddd3ee, #b19cd9, #9477cb, #ddd3ee)',
-    // animation: "gradient 15s ease infinite",
     color: "black",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -122,80 +119,80 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
       {authUser ? (
         <>
           <CssBaseline />
-          <AppBar
-            position="fixed"
-            className={clsx(classes.appBar, {
-              [classes.appBarShift]: open,
-            })}
-          >
-            <Toolbar>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={handleDrawerOpen}
-                    edge="start"
-                    className={clsx(classes.menuButton, {
-                      [classes.hide]: open,
-                    })}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <a href="/">
-                    <img
-                      src="https://i.ibb.co/R033KYd/LOGO.png"
-                      alt="shippa"
-                      border="0"
-                      height="60px"
-                      style={{ marginTop: "10px", marginRight: '30px' }}
-                    />{" "}
-                  </a>
-                  <Home />
-                  {authUser ? (
-                    <Signout setCheckLogin={setCheckLogin} />
-                  ) : (
-                    <Signup setCheckLogin={setCheckLogin} />
-                  )}
-                  {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
-                  <CheckPrice />
-                  {authUser ? <NewOrder /> : ""}
-                </div>
+            <AppBar
+              position="fixed"
+              className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+              })}
+            >
+              <Toolbar>
                 <div
                   style={{
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    position: 'absolute',
-                    right:'30px'
                   }}
                 >
-                  <h3 style={{ color: "#3C3B3D", marginRight: '15px' }}>
-                    {authUser.name}
-                  </h3>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src="https://i.ibb.co/Fq8hsCp/lexus.png"
-                    className={classes.small}
-                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <IconButton
+                      color="inherit"
+                      aria-label="open drawer"
+                      onClick={handleDrawerOpen}
+                      edge="start"
+                      className={clsx(classes.menuButton, {
+                        [classes.hide]: open,
+                      })}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <a href="/">
+                      <img
+                        src="https://i.ibb.co/R033KYd/LOGO.png"
+                        alt="shippa"
+                        border="0"
+                        height="60px"
+                        style={{ marginTop: "10px", marginRight: '30px' }}
+                      />{" "}
+                    </a>
+                    <Home />
+                    {authUser ? (
+                      <Signout setCheckLogin={setCheckLogin} />
+                    ) : (
+                      <Signup setCheckLogin={setCheckLogin} />
+                    )}
+                    {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
+                    <CheckPrice />
+                    {authUser ? <NewOrder /> : ""}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      position: 'absolute',
+                      right:'30px'
+                    }}
+                  >
+                    <h3 style={{ color: "#3C3B3D", marginRight: '15px' }}>
+                      {authUser.name}
+                    </h3>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4_5ok2dFJdtGb2rxCfr9LDbuy_ypgNhT2bA&usqp=CAU"
+                      className={classes.small}
+                    />
+                  </div>
                 </div>
-              </div>
-            </Toolbar>
-          </AppBar>
+              </Toolbar>
+            </AppBar>
           <Drawer
             variant="permanent"
             className={clsx(classes.drawer, {
@@ -222,7 +219,9 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
             <List>
               <ListItem button>
                 <ListItemIcon>
+                  <Link style={{ color: "#707070", textDecoration: "none" }} to='/shipments' >
                   <LocalShippingIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
@@ -235,7 +234,12 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
+                  <Link
+                  to="/invoices"
+                  style={{ color: "#707070", textDecoration: "none" }}
+                  >
                   <ReceiptIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
@@ -247,26 +251,19 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
+                  <Link
+                  to="/profile"
+                  style={{ color: "#707070", textDecoration: "none" }}
+                  >
                   <AccountCircleIcon />
+                  </Link>
                 </ListItemIcon>
                 <ListItemText />
                 <Link
                   style={{ color: "black", textDecoration: "none" }}
-                  to="/shipments"
+                  to="/profile"
                 >
                   Profile
-                </Link>
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <SettingsIcon />
-                </ListItemIcon>
-                <ListItemText />
-                <Link
-                  style={{ color: "black", textDecoration: "none" }}
-                  to="/shipments"
-                >
-                  Settings
                 </Link>
               </ListItem>
             </List>
@@ -281,14 +278,14 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               [classes.appBarShift]: open,
             })}
           >
-            <Toolbar style={{ marginLeft: "70px" }}>
+            <Toolbar style={{ marginLeft: "25px" }}>
               <a href="/">
                 <img
                   src="https://i.ibb.co/R033KYd/LOGO.png"
                   alt="shippa"
                   border="0"
                   height="50px"
-                  style={{ marginTop: "10px" }}
+                  style={{ marginTop: "10px", marginRight: '30px' }}
                 />{" "}
               </a>
               <Home />
@@ -299,8 +296,8 @@ export default function MiniDrawer({ setCheckLogin, checkLogin }) {
               )}
               {authUser ? "" : <Signin setCheckLogin={setCheckLogin} />}
               <CheckPrice />
-              {authUser ? <NewOrder /> : ""}
-              {authUser ? <h1>Hello {authUser.name}</h1> : ""}
+                {authUser ? <NewOrder /> : ""}
+                {authUser ? <h1>Hello {authUser.name}</h1> : ""}
             </Toolbar>
           </AppBar>
         </>

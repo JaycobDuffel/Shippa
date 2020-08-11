@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 export default function NewOrder() {
@@ -43,10 +48,12 @@ export default function NewOrder() {
 
   return (
     <div>
-      <IconButton variant="contained" onClick={handleClickOpen}>
-        <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5">
+        <div className="home-button">
           <Button
+            className={classes.button}
             variant="outlined"
+            onClick={handleClickOpen}
             style={{
               border: "#3c3b3d 2px solid",
               width: "105%",
@@ -57,8 +64,8 @@ export default function NewOrder() {
               New Shipment
             </Link>
           </Button>
-        </Typography>
-      </IconButton>
+        </div>
+      </Typography>
       <Dialog
         open={open}
         onClose={handleClose}

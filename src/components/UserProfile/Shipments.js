@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -42,7 +43,6 @@ const useStyles = makeStyles({
 
 export default function Shipments() {
   const classes = useStyles();
-  const [value, setValue] = useState('');
   const [userShipments, setUserShipments] = useState([]);
 
   const id = JSON.parse(localStorage.getItem('authUser')).id;
@@ -109,17 +109,16 @@ export default function Shipments() {
               <StyledTableCell align="center">{shipment.start_point}</StyledTableCell>
               <StyledTableCell align="center">{shipment.end_point}</StyledTableCell>
               <StyledTableCell align="center">{shipment.distance/1000}</StyledTableCell>
-              <StyledTableCell align="center">{shipment.price}</StyledTableCell>
+              <StyledTableCell align="center">${shipment.price}</StyledTableCell>
               <StyledTableCell align="center"><Button variant="contained">Edit</Button></StyledTableCell>
               <StyledTableCell align="center"><Button variant="contained" color="secondary" onClick={() => {deleteUserShipment(shipment.id)}}>Delete</Button></StyledTableCell>
               <StyledTableCell align="center">
               <FormControl variant="filled" className={classes.formControl}>
                 <InputLabel htmlFor="filled-age-native-simple">Status</InputLabel>
-                <Select style={{width:'15vh', height:'45px'}} id="shipSelect" defaultValue={'Default'} >
-                  <option aria-label="None" value='Default' disabled />
-                  <option value={1}>Open</option>
-                  <option value={2} onClick={() => {updateStatus(shipment.id, shipment)}}>Assigned</option>
-                  <option value={3} >Delivered</option>
+                <Select style={{width:'15vh', height:'45px'}} id="shipSelect" defaultValue={''} >
+                  <MenuItem value={1}>Open</MenuItem>
+                  <MenuItem value={2} onClick={() => {updateStatus(shipment.id, shipment)}}>Assigned</MenuItem>
+                  <MenuItem value={3} >Delivered</MenuItem>
                 </Select>
               </FormControl>
               </StyledTableCell>

@@ -17,6 +17,7 @@ import { render } from '@testing-library/react';
 // import Chat from './components/Chat/TestMessage.js';
 import Invoices from './components/UserProfile/Invoices'
 import HomePage from './components/HomePage'
+import Profile from './components/UserProfile/Profile';
 
 export default function App() {
   const [checkLogin, setCheckLogin] = useState(true);
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/contact" exact component={ContactUsPage} />
           <Route path="/shipments" exact component={Shipments} />
           <Route path="/invoices" exact component={Invoices} />
+          <Route path="/profile" exact component={Profile} />
         </Switch>
         {/* <ChatWindow /> */}
         {/* <Distance /> */}

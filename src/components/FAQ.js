@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  button: {
+    '&:hover': {
+      background: '#a476af'
+    }
+  }
 }));
 
 
@@ -32,7 +37,9 @@ export default function FAQ() {
     return (
       <IconButton variant="contained">
         <Typography component="h1" variant="h5">
+        
           <Button
+          className={classes.button}
             variant="outlined"
             style={{
               border: "#3c3b3d 2px solid",
