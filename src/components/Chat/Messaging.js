@@ -66,9 +66,9 @@ export default function Messaging(props) {
       <div key={index}>
         <Paper variant='outlined' >
         <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-            <Avatar>W</Avatar>
-          </Grid>
+          {/* <Grid item> */}
+            {/* <Avatar>W</Avatar> */}
+          {/* </Grid> */}
           <Grid item xs>
             <Typography>{name}: {message}</Typography>
           </Grid>

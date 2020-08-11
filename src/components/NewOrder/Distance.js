@@ -9,7 +9,11 @@ export default function Distance ({ pickupAddress, pickupCity, dropoffAddress, d
   
   // https://cors-anywhere.herokuapp.com/
   const distanceMatrix = () => {
-    axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?',{
+    axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?', {
+      
+      headers: {
+        'Content-Type': 'application/json'
+      },
       params: {
         units: 'metric',
         origins: `${pickupAddress} ${pickupCity}`,

@@ -36,22 +36,22 @@ export default function TermsOfService() {
 
   return (
     <IconButton variant="contained">
-        <Typography component="h1" variant="h5">
-          <Button
-          className={classes.button}
-            variant="outlined"
-            style={{
-              border: "#3c3b3d 2px solid",
-              width: "105%",
-              height: "105%",
-            }}
-          >
-            <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/privacy">
-             Terms of Service
-            </Link>
-          </Button>
-        </Typography>
-       </IconButton>
+      <Typography component="h1" variant="h5">
+        <Button
+        className={classes.button}
+          variant="outlined"
+          style={{
+            border: "#3c3b3d 2px solid",
+            width: "105%",
+            height: "105%",
+          }}
+        >
+          <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/privacy">
+            Terms of Service
+          </Link>
+        </Button>
+      </Typography>
+    </IconButton>
   )
 
   

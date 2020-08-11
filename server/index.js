@@ -2,8 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-const http = require('http').createServer(app);
-const io = require('socket.io')(http)
 
 
 //middleware
@@ -93,7 +91,6 @@ app.delete('/users/:id', async (req, res) => {
 // Create a shipment
 app.post('/shipments', async (req, res) => {
   try {
-    //fix with not-hardcoded value
     const user_id = req.body.user_id;
     const start_point = req.body.start_point;
     const end_point = req.body.end_point;

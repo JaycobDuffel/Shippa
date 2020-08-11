@@ -50,24 +50,30 @@ export default function CheckPrice() {
 
   return (
     <div>
-      <IconButton variant="contained" onClick={handleClickOpen}>
-        <Typography component="h1" variant="h5">
+      <Typography  component="h1" variant="h5">
+        <div className="home-button">
           <Button
             className={classes.button}
             variant="outlined"
+            onClick={handleClickOpen}
             style={{
               border: "#3c3b3d 2px solid",
               width: "105%",
               height: "105%",
-              
             }}
           >
-            <Link style={{ color: "#3c3b3d", textDecoration: "none", fontSize: '110%' }} to="/">
+            <Link style={{ 
+              color: "#3c3b3d", 
+              textDecoration: "none", 
+              fontSize: '110%' 
+              }} 
+              to="/"
+            >
               Get a Quote
             </Link>
           </Button>
-        </Typography>
-      </IconButton>
+        </div>
+      </Typography>
       <Dialog
         open={open}
         onClose={handleClose}

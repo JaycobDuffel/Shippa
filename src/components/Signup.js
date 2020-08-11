@@ -103,8 +103,8 @@ export default function Signup({ setCheckLogin }) {
 
   return (
     <div>
-      <IconButton variant="contained" className={classes.menuButton} >
-        <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5">
+        <div className="home-button">
           <Button
             onClick={handleClickOpen}
             className={classes.button}
@@ -119,8 +119,8 @@ export default function Signup({ setCheckLogin }) {
               Sign Up
             </Link>
           </Button>
-        </Typography>
-      </IconButton>
+        </div>
+      </Typography>
       <Dialog
         open={open}
         onClose={handleClose}

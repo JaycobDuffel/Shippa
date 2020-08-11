@@ -111,7 +111,8 @@ export default function Checkout() {
       const body  = { user_id, start_point, end_point, latitude, longitude, distanceBetween, cost, status  }
         await fetch("http://localhost:5000/shipments", {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { 
+          "Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
     } catch (error) {

@@ -82,10 +82,10 @@ export default function Signin() {
 
   return (
     <div>
-      <IconButton variant="contained" >
-        <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5">
+        <div className="home-button">
           <Button
-          className={classes.button}
+            className={classes.button}
             onClick={handleClickOpen}
             variant="outlined"
             style={{
@@ -98,8 +98,8 @@ export default function Signin() {
               Sign In
             </Link>
           </Button>
-        </Typography>
-      </IconButton>
+        </div>
+      </Typography>
       <Dialog
         open={open}
         onClose={handleClose}

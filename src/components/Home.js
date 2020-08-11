@@ -26,20 +26,27 @@ const useStyles = makeStyles((theme) => ({
   button: {
     '&:hover': {
       background: '#a476af'
-    }
+    },
+
   }
+
 }));
 
 export default function Home() {
   const classes = useStyles();
 
   return (
-    <IconButton variant="contained" className={classes.menuButton}>
-      <Typography component="h1" variant="h5">
+    <Typography component="h1" variant="h5">
+      <div className="home-button">
         <Button
-        className={classes.button}
           variant="outlined"
-          style={{ border: "#3c3b3d 2px solid", width: "105%", height: "105%" }}
+          className={classes.button}
+          style={{
+            border: "#3c3b3d 2px solid",
+            width: "105%",
+            height: "105%",
+            
+          }}
         >
           <Link
             style={{
@@ -52,7 +59,7 @@ export default function Home() {
             Home
           </Link>
         </Button>
-      </Typography>
-     </IconButton>
+      </div>
+    </Typography>
   );
 }

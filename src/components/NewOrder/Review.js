@@ -52,7 +52,7 @@ export default function Review(props) {
           {products.map((product) => (
             <ListItem className={classes.listItem} key={product.name}>
               <ListItemText primary={product.name} secondary={product.desc} />
-              <Typography variant="body2">{product.price}</Typography>
+              <Typography variant="body2">$ {product.price}</Typography>
             </ListItem>
           ))}
         </List>

@@ -14,7 +14,7 @@ export default function Nav({ setCheckLogin, checkLogin }) {
   
   return (
     <div className = {classes.root}>
-            <SideBar checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
+      <SideBar checkLogin={checkLogin} setCheckLogin={setCheckLogin}/>
     </div>
   )
 }
