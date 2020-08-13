@@ -13,9 +13,9 @@ map to view the details and chat directly with the car dealer to finalize shipme
 ## Github
 Ali Al Shaikly (https://github.com/Alshaikhly/)
 
-Jaycob Duffel (https://github.com/JaycobDuffel)
-
 Aubrey Blair-Pattison (https://github.com/TheMagicalAubster)
+
+Jaycob Duffel (https://github.com/JaycobDuffel)
 
 ## Screenshots
 
