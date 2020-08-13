@@ -1,24 +1,27 @@
 
 
-# Interview Scheduler
+# Shippa
 =========
 
 ## Project Overview
-Interview Scheduler is a scheduler app that allows a user to book, change, and delete interviews. Interview Scheduler was built with React and tested with Storybook, Jest, and Cypress.
+Shippa is an app that acts as the middleman between car dealers and carriers. 
+Shippa Allows car dealers to post shipments on a map 
+for carriers to see. Carriers can then click the shipment on the
+map to view the details and chat directly with the car dealer to finalize shipment details.
 
 
 ## Github
 Ali Al Shaikly (https://github.com/Alshaikhly/)
+
 Jaycob Duffel (https://github.com/JaycobDuffel)
+
 Aubrey Blair-Pattison (https://github.com/TheMagicalAubster)
 
 ## Screenshots
 
-!["root page"](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/home_page.png?raw=true)
-![Adding appointment](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/add_new_appt.png?raw=true)
-![Showing new appointment](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/Added_new_appointment.png?raw=true)
-!["deleting page"](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/deleting.png?raw=true)
-
+![Home Page](https://github.com/JaycobDuffel/Shippa/blob/master/public/images/Screen%20Shot%202020-08-11%20at%209.12.04%20PM.png?raw=true)
+![Adding Shipment](https://github.com/JaycobDuffel/Shippa/blob/master/public/images/Screen%20Shot%202020-08-12%20at%206.52.49%20PM.png?raw=true)
+![Showing Map](https://github.com/JaycobDuffel/Shippa/blob/master/public/images/Screen%20Shot%202020-08-12%20at%206.53.35%20PM.png?raw=true)
 
 ## Getting Started
 - Install dependencies for client by using the "npm install" command.
