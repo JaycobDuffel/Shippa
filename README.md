@@ -9,6 +9,10 @@ Shippa Allows car dealers to post shipments on a map
 for carriers to see. Carriers can then click the shipment on the
 map to view the details and chat directly with the car dealer to finalize shipment details.
 
+## Video Walkthrough of Shipp
+
+(https://streamable.com/ilaoh1)
+
 
 ## Github
 Ali Al Shaikly (https://github.com/Alshaikhly/)
